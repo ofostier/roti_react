@@ -1,6 +1,9 @@
 # TEMPLATE_REACT_NODE_PROFILE
 
-This is a template project based on REACTJS, NODE and KeystoneJS
+**This project is ROTI APP VOTING**
+
+
+Based on REACTJS, NODE and KeystoneJS
 Inspired from [WESBOS Advanced-React](https://github.com/wesbos/Advanced-React/blob/master/stepped-solutions/57/frontend/Checkout.js)
 
 With this template you can start a web site with :
