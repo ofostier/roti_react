@@ -10,6 +10,7 @@ export const User = list({
     email: text({ isRequired: true, isUnique: true }),
     password: password(),
     phone: text({ isRequired: false }),
+    rotis: relationship({ ref: 'Roti.user', many: true }),
     // TODO, add roles, cart and orders
   },
 });

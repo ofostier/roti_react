@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     --red: #ff0000;
     --black: #393939;
-    --grey: #3A3A3A;
+    --grey: #BFBFBF; //#3A3A3A;
     --gray: var(--grey);
     --lightGrey: #e1e1e1;
     --lightGray: var(--lightGrey);
@@ -41,6 +41,9 @@ const GlobalStyles = createGlobalStyle`
   }
   button {
     font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  input, textarea {
+    border-radius: 3px;
   }
 `;
 
