@@ -9,7 +9,7 @@ const Title = styled.h3`
   background: var(--black);
   color: white;
   a {
-    background: var(--red);
+    //background: var(--red);
     display: inline;
     line-height: 1.3;
     font-size: 2rem;
