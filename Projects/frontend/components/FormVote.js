@@ -1,8 +1,12 @@
-
+import { useQuery, useMutation } from '@apollo/client';
+import gql from 'graphql-tag';
+import { ALL_ROTIS_QUERY } from './Rotis';
 import Form from './styles/Form';
+import useForm from '../lib/useForm';
 import DisplayError from './ErrorMessage';
 import Rating from '@material-ui/lab/Rating';
 import styled from 'styled-components';
+import ThxFeedBack from './ThxFeedBack';
 
 const BlockRating = styled.div`
   font-size: 3.5rem;
@@ -17,10 +21,75 @@ const BlockRating = styled.div`
   //padding-right: 1rem;
   border-top: 1px solid var(--lightGrey);
 `;
+const CREATE_VOTE_MUTATION = gql`
+  mutation CREATE_VOTE_MUTATION(
+    # Which variables are getting passed in? And What types are they
+    $name: String!
+    $email: String
+    $note: String
+    #$mood: String
+    $comment: String
+    $roti: ID!
+  ) {
+    createVote(
+      data: {
+        name: $name
+        email: $email
+        comment: $comment
+        note: $note
+        #mood: $mood
+        rotis: {connect: {id:$roti}}
+      }
+    ) {
+      id
+      note
+      #rotis
+    }
+  }
+`;
 
-export default function FormVote ({handleSubmit, handleChange, error, loadingcreated, inputs}) {
+export default function FormVote ({ id }) {
+  const { inputs, handleChange, clearForm, resetForm } = useForm({
+    name: '',
+    email: '',
+    comment: '',
+    note: '0',
+    mood: '',
+  });
+  
+  const [createVote, { data, loading, error }] = useMutation(
+    CREATE_VOTE_MUTATION,
+    {
+      variables: {
+        name: inputs.name,
+        email: inputs.email,
+        comment: inputs.comment,
+        note: inputs.note,
+        roti: id,
+      },
+      //variables: {data:{name:"inputs.name", roti:"607e9fc1b86dba1e97689a32"}},
+      refetchQueries: [{ query: ALL_ROTIS_QUERY }],
+    }
+  );
+  const handleSubmit = async (e) => {
 
+    e.preventDefault();
+    // Submit the inputfields to the backend:
+    const res = await createVote();
+    
+    clearForm();
+    // Go to that product's page!
+    // Router.push({
+    //   pathname: `/roti/${Roti.id}`,
+    // });
+  }
+  
+  //console.log(data);
+  if (data) {
+    return(<ThxFeedBack id={id}></ThxFeedBack>)
+  }
   return (
+
   <Form
       onSubmit={handleSubmit}
     >
@@ -28,8 +97,8 @@ export default function FormVote ({handleSubmit, handleChange, error, loadingcre
       
       <h2>Who are you ?</h2>
       <fieldset 
-        disabled={loadingcreated} 
-        aria-busy={loadingcreated}
+        disabled={loading} 
+        aria-busy={loading}
       >
         <label htmlFor="name">
           Your name
@@ -59,6 +128,7 @@ export default function FormVote ({handleSubmit, handleChange, error, loadingcre
       <fieldset>
         <BlockRating>
           <Rating 
+            style={{fontSize:40, padding: '20px 0 10px 0',}}
             id="note"
             name="note" 
             size="large"

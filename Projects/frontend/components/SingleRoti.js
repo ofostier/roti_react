@@ -6,9 +6,7 @@ import ItemStyles from './styles/ItemStyles';
 import Title from './styles/Title';
 import DisplayError from './ErrorMessage';
 import formatDate from '../lib/formatDate';
-import useForm from '../lib/useForm';
 import Rating from '@material-ui/lab/Rating';
-import { ALL_ROTIS_QUERY } from './Rotis';
 import FormVote from './FormVote';
 import ThxFeedBack from './ThxFeedBack';
 
@@ -97,31 +95,7 @@ const SINGLE_ROTI_QUERY = gql`
     }
   }
 `;
-const CREATE_VOTE_MUTATION = gql`
-  mutation CREATE_VOTE_MUTATION(
-    # Which variables are getting passed in? And What types are they
-    $name: String!
-    $email: String
-    $note: String
-    #$mood: String
-    $comment: String
-    $roti: ID!
-  ) {
-    createVote(
-      data: {
-        name: $name
-        email: $email
-        comment: $comment
-        note: $note
-        #mood: $mood
-        rotis: {connect: {id:$roti}}
-      }
-    ) {
-      id
-      #rotis
-    }
-  }
-`;
+
 
 export default function SingleRoti ({ id }) {
   
@@ -132,40 +106,6 @@ export default function SingleRoti ({ id }) {
   });
   // if (error) return <DisplayError error={error} />;
 
-  const { inputs, handleChange, clearForm, resetForm } = useForm({
-    name: '',
-    email: '',
-    comment: '',
-    note: '',
-    mood: '',
-  });
-  
-  const [createVote, { loadingcreated, errorcreated, datacreated }] = useMutation(
-    CREATE_VOTE_MUTATION,
-    {
-      variables: {
-        name: inputs.name,
-        email: inputs.email,
-        comment: inputs.comment,
-        note: inputs.note,
-        roti: id,
-      },
-      //variables: {data:{name:"inputs.name", roti:"607e9fc1b86dba1e97689a32"}},
-      refetchQueries: [{ query: ALL_ROTIS_QUERY }],
-    }
-  );
-  const handleSubmit = async (e) => {
-
-    e.preventDefault();
-    // Submit the inputfields to the backend:
-    const res = await createVote();
-    clearForm();
-    // Go to that product's page!
-    // Router.push({
-    //   pathname: `/roti/${Roti.id}`,
-    // });
-  }
-  //console.log(inputs);
   if (loading ) return <p>Loading...</p>;
   const { Roti } = data;
 
@@ -179,18 +119,13 @@ export default function SingleRoti ({ id }) {
   }
 
   function UseFormVote (datacreated) {
-    console.log(datacreated)
     if (!datacreated) {
       
       return (
-        <FormVote 
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          inputs= {inputs}
-        ></FormVote>
+        <FormVote id={id}></FormVote>
       )
     }
-    return (<ThxFeedBack>Great</ThxFeedBack>)
+    return (<ThxFeedBack></ThxFeedBack>)
   }
 
   return (
@@ -202,7 +137,7 @@ export default function SingleRoti ({ id }) {
         
         <RotiIntroStyles>
           {(Roti.user.name).toUpperCase()}
-          <p>Need your feedback >></p>
+          <p>Need your feedback &gt;&gt;</p>
         </RotiIntroStyles>
         <Title>{Roti.name} blaljdksjkjdfjkjkfdkj</Title>
         <p>{Roti.description}</p>
