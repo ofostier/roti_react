@@ -1,10 +1,10 @@
-# TEMPLATE_REACT_NODE_PROFILE
+# ROTI REACT
+![very good|512x397,20%](./Projects/frontend/public/static/roti.png)
 
 **This project is ROTI APP VOTING**
-
+From [https://github.com/ofostier/template_react_node_profile](https://github.com/ofostier/template_react_node_profile)
 
 Based on REACTJS, NODE and KeystoneJS
-Inspired from [WESBOS Advanced-React](https://github.com/wesbos/Advanced-React/blob/master/stepped-solutions/57/frontend/Checkout.js)
 
 With this template you can start a web site with :
 - User authentication (login / logout)
