@@ -137,7 +137,7 @@ export default function SingleRoti ({ id }) {
         
         <RotiIntroStyles>
           {(Roti.user.name).toUpperCase()}
-          <p>Need your feedback >></p>
+          <p>Need your feedback &gt;&gt;</p>
         </RotiIntroStyles>
         <Title>{Roti.name} blaljdksjkjdfjkjkfdkj</Title>
         <p>{Roti.description}</p>

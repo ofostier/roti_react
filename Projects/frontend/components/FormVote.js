@@ -128,6 +128,7 @@ export default function FormVote ({ id }) {
       <fieldset>
         <BlockRating>
           <Rating 
+            style={{fontSize:40, padding: '20px 0 10px 0',}}
             id="note"
             name="note" 
             size="large"

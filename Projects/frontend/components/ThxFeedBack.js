@@ -17,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 const style = {
   //background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
   borderRadius: 10,
-  fontSize: 35,
+  fontSize: 50,
   border: 0,
   height: 30,
   //padding: '0 30px',
@@ -184,7 +184,7 @@ export default function ThxFeedBack ( {id} ) {
         
       </BlockResultFeedBackStyle>
       <BlockMood>
-        Mood
+        Mood <br/>
         <Rating
             style={style}
             name="customized-icons"
@@ -192,6 +192,7 @@ export default function ThxFeedBack ( {id} ) {
             //getLabelText={(value) => customIcons[value].label}
             //IconContainerComponent={IconContainer}
             icon={<FavoriteIcon fontSize="inherit" />}
+            max={1}
             readOnly
           />
       </BlockMood>
