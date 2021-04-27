@@ -15,7 +15,7 @@ export default function Nav() {
       <Link href="/rotis">Rotis</Link>
       {user && (
         <>
-          <Link href="/roti">Create</Link>
+          <Link href="/create">Create</Link>
           <Link href="/account">Account</Link>
           <SignOut />
         </>

@@ -9,22 +9,19 @@ const CURRENT_USER_QUERY = gql`
         name
         firstname
         phone
-        # TODO: Query the cart once we have it
-        # cart {
-        #   id
-        #   quantity
-        #   product {
-        #     id
-        #     price
-        #     name
-        #     description
-        #     photo {
-        #       image {
-        #         publicUrlTransformed
-        #       }
-        #     }
-        #   }
-        # }
+        rotis {
+          id
+          subject
+          description
+          votes {
+            id
+            name
+            note
+          }
+          _votesMeta{count}
+        }
+        _rotisMeta {count}
+        
       }
     }
   }

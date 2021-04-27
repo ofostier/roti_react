@@ -77,11 +77,12 @@ export default function Roti({ roti }) {
   return (
     <ItemStyles>
       <Title>
-        <Link href={`/roti/${roti.id}`}>{roti.name}</Link>
+        <Link href={`/roti/${roti.id}`}>{roti.subject}</Link>
       </Title>
       <p>{roti.description}</p>
       <BlockRating>
         <Rating 
+          style={{fontSize:35, paddingTop:10}}
           name="vote" 
           value={sumnote/countvote}
           size="large"

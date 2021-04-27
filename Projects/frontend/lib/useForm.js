@@ -24,6 +24,10 @@ export default function useForm(initial = {}) {
     if (type === 'file') {
       [value] = e.target.files;
     }
+
+    if (name === 'shorturl') {
+      value = value.replace(/\s/g, '-')
+    }
     
     setInputs({
       // copy the existing state

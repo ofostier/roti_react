@@ -11,8 +11,9 @@ export const ALL_ROTIS_QUERY = gql`
   query ALL_ROTIS_QUERY($skip: Int = 0, $first: Int) {
     allRotis(first: $first, skip: $skip) {
       id
-      name
+      subject
       description
+      shorturl
       datecreated
       votes {
         name

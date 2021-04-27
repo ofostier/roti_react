@@ -1,35 +1,42 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import Router from 'next/router';
+import RandomString from '../lib/randomString';
 import useForm from '../lib/useForm';
 import DisplayError from './ErrorMessage';
 // import { ALL_PRODUCTS_QUERY } from './Products';
 import Form from './styles/Form';
 
+const shortUrl = RandomString(6);
+
 const CREATE_ROTI_MUTATION = gql`
   mutation CREATE_ROTI_MUTATION(
     # Which variables are getting passed in? And What types are they
-    $name: String!
+    $subject: String!
     $description: String!
+    $shorturl: String!
   ) {
     createRoti(
       data: {
-        name: $name
+        subject: $subject
         description: $description
         status: "AVAILABLE"
+        shorturl: $shorturl
       }
     ) {
       id
       description
-      name
+      subject
     }
   }
 `;
 
+
 export default function CreateRoti() {
   const { inputs, handleChange, clearForm, resetForm } = useForm({
-    name: '',
+    subject: '',
     description: '',
+    shorturl: shortUrl,
   });
   const [createRoti, { loading, error, data }] = useMutation(
     CREATE_ROTI_MUTATION,
@@ -46,9 +53,9 @@ export default function CreateRoti() {
         const res = await createRoti();
         clearForm();
         // Go to that product's page!
-        // Router.push({
-        //   pathname: `/product/${res.data.createProduct.id}`,
-        // });
+        Router.push({
+          pathname: `/roti/${res.data.createRoti.id}`,
+        });
       }}
     >
       {/* <DisplayError error={error} /> */}
@@ -58,12 +65,13 @@ export default function CreateRoti() {
         // aria-busy={loading}
       >
         <label htmlFor="name">
-          ROTI Name
+          ROTI Subject
           <input
             type="text"
-            id="name"
-            name="name"
-            placeholder="Roti Name"
+            maxlength="20" 
+            id="subject"
+            name="subject"
+            placeholder="Roti subject or event name"
             value={inputs.name}
             onChange={handleChange}
           />
@@ -78,7 +86,20 @@ export default function CreateRoti() {
             onChange={handleChange}
           />
         </label>
-
+        </fieldset>
+        <fieldset>
+          <h2>Options</h2>
+          <label htmlFor="shorturl">
+            Short URL (max 20 characters)
+            <input
+              maxlength="20"            
+              id="shorturl"
+              name="shorturl"
+              placeholder="shorturl"
+              value={inputs.shorturl}
+              onChange={handleChange}
+            />
+          </label>
         <button type="submit">+ Add Roti</button>
       </fieldset>
     </Form>

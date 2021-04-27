@@ -9,6 +9,7 @@ import formatDate from '../lib/formatDate';
 import Rating from '@material-ui/lab/Rating';
 import FormVote from './FormVote';
 import ThxFeedBack from './ThxFeedBack';
+import { useShortUrl } from './ShortUrl';
 
 const RotiStyles = styled.div`
   display: grid;
@@ -80,35 +81,48 @@ const BlockRating = styled.div`
 `;
 
 const SINGLE_ROTI_QUERY = gql`
-  query SINGLE_ROTI_QUERY($id: ID!) {
-    Roti(where: { id: $id }) {
+  query SINGLE_ROTI_QUERY($shorturl: String!) {
+    allRotis(where:{AND: [{shorturl:$shorturl}]})
+    {
       subject
-      description
-      shorturl
-      id
-      createdAt
-      status
-      user {
+        description
+        shorturl
         id
-        name
-        email
-      }
+        createdAt
+        status
+        user {
+          id
+          name
+          email
+        }
     }
   }
 `;
 
+export default function VoteRoti ({ shorturl }) {
+  console.log(shorturl);
+  const url = useShortUrl(shorturl);
 
-export default function SingleRoti ({ id }) {
-  
   const { data, loading, error } = useQuery(SINGLE_ROTI_QUERY, {
     variables: {
-      id,
+      shorturl,
     },
   });
   // if (error) return <DisplayError error={error} />;
 
   if (loading ) return <p>Loading...</p>;
-  const { Roti } = data;
+  const Roti = data.allRotis[0];
+  //console.log(data)
+  // console.log(data.allRotis[0].subject)
+  // Object.keys(data.allRotis).map((roti, i) => (
+  //   console.log(data.allRotis[roti].subject)
+  // ))
+  //const {myroti} = data.allRotis.filter(rotis => rotis).map((roti,key) => (roti));
+
+  //console.log((myroti))
+  //console.log(Object.values(myroti))
+
+  //return(<p>STOPPED</p>);
 
   function Status () {
     if(Roti.status == "AVAILABLE") {
@@ -123,7 +137,7 @@ export default function SingleRoti ({ id }) {
     if (!datacreated) {
       
       return (
-        <FormVote id={id}></FormVote>
+        <FormVote id={Roti.id}></FormVote>
       )
     }
     return (<ThxFeedBack></ThxFeedBack>)
@@ -132,7 +146,7 @@ export default function SingleRoti ({ id }) {
   return (
     <RotiStyles>
       <Head>
-        <title>ROTI | {Roti.name}</title>
+        {/* <title>ROTI | {Roti.shorturl}</title> */}
       </Head>
       <div>
         

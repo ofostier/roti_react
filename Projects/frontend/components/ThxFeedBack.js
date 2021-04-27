@@ -2,7 +2,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+//import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';

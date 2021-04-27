@@ -171,8 +171,9 @@ input VoteRelateToManyInput {
 """ A keystone list """
 type Roti {
   id: ID!
-  name: String
+  subject: String
   description: String
+  shorturl: String
   datecreated: String
   status: String
   user: User
@@ -189,24 +190,24 @@ input RotiWhereInput {
   id_not: ID
   id_in: [ID]
   id_not_in: [ID]
-  name: String
-  name_not: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  name_i: String
-  name_not_i: String
-  name_contains_i: String
-  name_not_contains_i: String
-  name_starts_with_i: String
-  name_not_starts_with_i: String
-  name_ends_with_i: String
-  name_not_ends_with_i: String
-  name_in: [String]
-  name_not_in: [String]
+  subject: String
+  subject_not: String
+  subject_contains: String
+  subject_not_contains: String
+  subject_starts_with: String
+  subject_not_starts_with: String
+  subject_ends_with: String
+  subject_not_ends_with: String
+  subject_i: String
+  subject_not_i: String
+  subject_contains_i: String
+  subject_not_contains_i: String
+  subject_starts_with_i: String
+  subject_not_starts_with_i: String
+  subject_ends_with_i: String
+  subject_not_ends_with_i: String
+  subject_in: [String]
+  subject_not_in: [String]
   description: String
   description_not: String
   description_contains: String
@@ -225,6 +226,24 @@ input RotiWhereInput {
   description_not_ends_with_i: String
   description_in: [String]
   description_not_in: [String]
+  shorturl: String
+  shorturl_not: String
+  shorturl_contains: String
+  shorturl_not_contains: String
+  shorturl_starts_with: String
+  shorturl_not_starts_with: String
+  shorturl_ends_with: String
+  shorturl_not_ends_with: String
+  shorturl_i: String
+  shorturl_not_i: String
+  shorturl_contains_i: String
+  shorturl_not_contains_i: String
+  shorturl_starts_with_i: String
+  shorturl_not_starts_with_i: String
+  shorturl_ends_with_i: String
+  shorturl_not_ends_with_i: String
+  shorturl_in: [String]
+  shorturl_not_in: [String]
   datecreated: String
   datecreated_not: String
   datecreated_lt: String
@@ -273,10 +292,12 @@ input RotiWhereUniqueInput {
 enum SortRotisBy {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
+  subject_ASC
+  subject_DESC
   description_ASC
   description_DESC
+  shorturl_ASC
+  shorturl_DESC
   datecreated_ASC
   datecreated_DESC
   status_ASC
@@ -292,8 +313,9 @@ enum SortRotisBy {
 }
 
 input RotiUpdateInput {
-  name: String
+  subject: String
   description: String
+  shorturl: String
   datecreated: String
   status: String
   user: UserRelateToOneInput
@@ -306,8 +328,9 @@ input RotisUpdateInput {
 }
 
 input RotiCreateInput {
-  name: String
+  subject: String
   description: String
+  shorturl: String
   datecreated: String
   status: String
   user: UserRelateToOneInput
