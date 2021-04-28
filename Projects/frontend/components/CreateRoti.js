@@ -89,6 +89,7 @@ export default function CreateRoti() {
         </fieldset>
         <fieldset>
           <h2>Options</h2>
+          //TODO: [RR-4] Create field input for TAGS
           <label htmlFor="shorturl">
             Short URL (max 20 characters)
             <input

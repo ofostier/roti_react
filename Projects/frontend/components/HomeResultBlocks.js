@@ -65,6 +65,7 @@ export default function HomeResultBlock( {me} ) {
           <label>PLAYERS</label>
         </div>
       </BlockResultStyles>
+      // TODO: [RR-3] Create action on button CREATET ROTI
       <NewRotiButtonStyles>Create New ROTI</NewRotiButtonStyles>
       
     </>
