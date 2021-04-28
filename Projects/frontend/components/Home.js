@@ -1,29 +1,30 @@
-//import react, {useState} from "react";
-//import { useQuery } from '@apollo/client';
-//import gql from 'graphql-tag';
-//import { useUser } from './User';
 import { useUser } from "./User";
-//import { motion } from "framer-motion"
 import styled from 'styled-components';
-//import Home from './styles/HomeResults'; 
 import HomeResults from "./styles/HomeResults";
 import HomeResultBlock from "./HomeResultBlocks";
 import HomeListBlock from "./HomeListBlocks";
+import { device } from "./styles/Device";
 
 
 const GridStyles = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
-    //grid-template-columns: repeat(3, minmax(300px, 1fr));
-    //grid-template-columns: repeat(auto-fit, minmax(200px, 8fr));
-    //grid-template-columns: repeat(auto-fit,minmax(2fr 8fr));
-    //grid-template-columns: repeat(4, 1fr);
-    //grid-template-columns: 30% 1fr 70% 2fr;
-   
-    grid-gap: 2rem;
-    //border: 1px solid var(--red);
-    font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    @media ${device.tablet} {
     
+        display: grid;
+        grid-template-columns: 370px 1fr; // 200px;
+        grid-template-rows: auto 1fr auto;
+
+    }
+    grid-gap: 2rem;
+    font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    div {
+    }
+    .menuu {
+    }
+    .detail {
+      //flex: 1;
+    }
   `;
 
 const HomeListStyles = styled.div`

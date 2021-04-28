@@ -9,9 +9,10 @@ import { da } from 'date-fns/locale';
 const BlockListStyles = styled.div`
   //display: grid;
   //grid-template-columns: 1fr;
-  //grid-gap: 60px;
+  grid-gap: 60px;
   font-size: 1.5rem;
   color: var(--black);
+  padding: 10px;
   //align-items: stretch;
   //justify-content: center;
   //align-content: center;
@@ -60,8 +61,12 @@ const RotiItemStyles = styled.li`
     color: var(--grey);
     font-size: 0.9rem;
     margin-right: 5px;
-    margin-top: -15px;
-    padding-top: -15px;
+    //margin-top: -15px;
+    //padding-top: -15px;
+    vertical-align: text-top;
+  }
+  link {
+    vertical-align: bottom;
   }
 `;
 
@@ -69,12 +74,10 @@ function RotiItem({ rotiItem }) {
   //const { roti } = rotiItem;
   //console.log(rotiItem)
   if (!rotiItem) return null;
-  console.log(getTotalNotes(rotiItem));
-  console.log(rotiItem._votesMeta.count);
-  console.log(getTotalNotes(rotiItem) / rotiItem._votesMeta.count);
+  
   return (
     <RotiItemStyles>
-      <Link href={`/roti/${rotiItem.id}`}>{rotiItem.subject}</Link>
+      <Link href={`/surveys/results/${rotiItem.id}`}>{rotiItem.subject}</Link>
       {/* <div> VOTES
 
       </div> */}

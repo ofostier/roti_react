@@ -1,13 +1,12 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
-import { perPage } from '../config';
 import { da } from 'date-fns/locale';
 
 const BlockResultStyles = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 60px;
+  grid-gap: 40px;
   font-size: 4.5rem;
   align-items: stretch;
   justify-content: center;

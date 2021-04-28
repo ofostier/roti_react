@@ -100,7 +100,7 @@ const SINGLE_ROTI_QUERY = gql`
 `;
 
 export default function VoteRoti ({ shorturl }) {
-  console.log(shorturl);
+  //console.log(shorturl);
   const url = useShortUrl(shorturl);
 
   const { data, loading, error } = useQuery(SINGLE_ROTI_QUERY, {
