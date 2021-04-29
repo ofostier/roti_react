@@ -4,6 +4,7 @@ import Router from 'next/router';
 import RandomString from '../lib/randomString';
 import useForm from '../lib/useForm';
 import DisplayError from './ErrorMessage';
+import React from "react";
 //import { InputTagsContainer } from 'react-input-tags';
 
 // import { ALL_PRODUCTS_QUERY } from './Products';
@@ -36,6 +37,8 @@ const CREATE_ROTI_MUTATION = gql`
 
 
 export default function CreateRoti() {
+  const [tags, setTags] = React.useState([]);
+
   const { inputs, handleChange, clearForm, resetForm } = useForm({
     subject: undefined,
     description: undefined,
@@ -65,7 +68,23 @@ export default function CreateRoti() {
         }
   };
 
+  function handleTagChange(evt) {
+    //setTitle(evt.target.value)
+    console.log(evt);
+  };
+
+  const getTags = (tags) => {
+    //setTags(tags);
+    console.log("tags parent");
+    console.log(tags);
+    console.log("-----------");
+  }
+  function showTag(){
+    console.log(tags)
+  }
+
   return (
+
     <Form
       onSubmit={
         
@@ -119,7 +138,8 @@ export default function CreateRoti() {
           }
           <label>
             Add Tags
-            <TagsInput></TagsInput>
+            {/* <TagsInput onChange={getTags}></TagsInput> */}
+            <TagsInput onChange={handleChange}></TagsInput>
           </label>
           <label htmlFor="shorturl">
             Short URL (max 20 characters)
@@ -133,6 +153,7 @@ export default function CreateRoti() {
             />
           </label>
         <button type="submit" >+ Add Roti</button>
+        <button type="button" onClick={showTag} >+show</button>
       </fieldset>
     </Form>
   );
