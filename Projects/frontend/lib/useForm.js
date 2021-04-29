@@ -17,6 +17,8 @@ export default function useForm(initial = {}) {
   // }
 
   function handleChange(e) {
+    console.log(e);
+    
     let { value, name, type } = e.target;
     if (type === 'number') {
       value = parseInt(value);
