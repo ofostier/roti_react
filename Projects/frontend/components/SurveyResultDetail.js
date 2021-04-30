@@ -128,12 +128,23 @@ function getTotalNotes(data){
   })
   return total;
 }
+function getTotalMood(data){
+  var total = 0;
+  //console.log(data.votes)
+  data.votes.map(vote => {
+     //console.log(vote.note);
+    //console.log(roti._votesMeta.count)
+    total += parseInt(vote.mood);
+  })
+  return total;
+}
 
 
 export default function SurveyResultDetail( {roti} ) {
 
   //console.log(roti.votes);
-  const note = getTotalNotes(roti) / roti._votesMeta.count;
+  const note = roti._votesMeta.count > 0 ? getTotalNotes(roti) / roti._votesMeta.count: 0;
+  const mood = roti._votesMeta.count > 0 ? getTotalMood(roti) / roti._votesMeta.count: 0;
 
   return (
     <GridStyles>
@@ -151,9 +162,9 @@ export default function SurveyResultDetail( {roti} ) {
             <label>PLAYERS</label>
           </span>
         </div>
-        <div>2<label>MOOD</label></div>
+        <div>{mood}<label>MOOD</label></div>
         <div>
-          {note}
+          {parseInt(note)}
           <label>
           <Rating
           style={{fontSize:25}}
@@ -168,6 +179,9 @@ export default function SurveyResultDetail( {roti} ) {
         </div>
       </GridResults>
       <h2><span>Details</span></h2>   
+        {
+          roti.votes.length===0?<p>Waiting for some votes</p>:''
+        }
         {roti.votes.map((vote) => (
             <GridResultsDetailsStyles key={vote.id}>
             <div className='content'>

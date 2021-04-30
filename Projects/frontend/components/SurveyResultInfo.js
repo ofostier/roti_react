@@ -77,6 +77,7 @@ const BlockListSectionLabel = styled.div`
     font-size: 1rem;
     padding:0.5rem 1rem;
     margin-right: 5px;
+    margin-bottom: 5px;
     border-radius: 4px;
     display: inline-block;
     border: 1px solid var(--grey);
@@ -124,8 +125,10 @@ function copyUrl(){
 }
 
 export default function SurveyResultInfo( {me, roti} ) {
-  console.log(me);
-  console.log(roti);
+  //console.log(me);
+  //console.log(roti);
+  console.log(roti.tags);
+  const tags = (roti.tags!= null && roti.tags.length>0)?roti.tags.split(','):[];
   return (
     <BlockInfoStyles>
       <BlockListSection>
@@ -144,8 +147,11 @@ export default function SurveyResultInfo( {me, roti} ) {
         <FontAwesomeIcon icon={faTags} size="2x" /> 
         <BlockListSectionLabel>Tags
           <p>
-            <em>mytag</em>
-            <em>data</em>
+            {
+              tags.map((value, key) => (
+                <em key={key}>{value} </em>
+              ))
+            }
           </p>
         </BlockListSectionLabel>
       </BlockListSection>

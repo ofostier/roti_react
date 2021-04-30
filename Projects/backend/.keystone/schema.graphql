@@ -179,6 +179,7 @@ type Roti {
   user: User
   votes(where: VoteWhereInput, search: String, sortBy: [SortVotesBy!], orderBy: String, first: Int, skip: Int): [Vote!]!
   _votesMeta(where: VoteWhereInput, search: String, sortBy: [SortVotesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  tags: String
   updatedAt: String
   createdAt: String
 }
@@ -267,6 +268,24 @@ input RotiWhereInput {
 
   """ condition must be false for all nodes """
   votes_none: VoteWhereInput
+  tags: String
+  tags_not: String
+  tags_contains: String
+  tags_not_contains: String
+  tags_starts_with: String
+  tags_not_starts_with: String
+  tags_ends_with: String
+  tags_not_ends_with: String
+  tags_i: String
+  tags_not_i: String
+  tags_contains_i: String
+  tags_not_contains_i: String
+  tags_starts_with_i: String
+  tags_not_starts_with_i: String
+  tags_ends_with_i: String
+  tags_not_ends_with_i: String
+  tags_in: [String]
+  tags_not_in: [String]
   updatedAt: String
   updatedAt_not: String
   updatedAt_lt: String
@@ -306,6 +325,8 @@ enum SortRotisBy {
   user_DESC
   votes_ASC
   votes_DESC
+  tags_ASC
+  tags_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -320,6 +341,7 @@ input RotiUpdateInput {
   status: String
   user: UserRelateToOneInput
   votes: VoteRelateToManyInput
+  tags: String
 }
 
 input RotisUpdateInput {
@@ -335,6 +357,7 @@ input RotiCreateInput {
   status: String
   user: UserRelateToOneInput
   votes: VoteRelateToManyInput
+  tags: String
 }
 
 input RotisCreateInput {
