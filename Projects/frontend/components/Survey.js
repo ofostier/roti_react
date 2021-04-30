@@ -13,6 +13,7 @@ const CURRENT_SURVEY_QUERY = gql`
           id
           subject
           description
+          tags
           votes {
             id
             name

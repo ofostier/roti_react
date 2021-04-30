@@ -16,9 +16,11 @@ const shortUrl = RandomString(6);
 const CREATE_ROTI_MUTATION = gql`
   mutation CREATE_ROTI_MUTATION(
     # Which variables are getting passed in? And What types are they
+    #
     $subject: String!
     $description: String!
     $shorturl: String!
+    $tags: String
   ) {
     createRoti(
       data: {
@@ -26,6 +28,7 @@ const CREATE_ROTI_MUTATION = gql`
         description: $description
         status: "AVAILABLE"
         shorturl: $shorturl
+        tags: $tags
       }
     ) {
       id
@@ -37,13 +40,12 @@ const CREATE_ROTI_MUTATION = gql`
 
 
 export default function CreateRoti() {
-  const [tags, setTags] = React.useState([]);
 
   const { inputs, handleChange, clearForm, resetForm } = useForm({
     subject: undefined,
     description: undefined,
     shorturl: shortUrl,
-    //tags: ['toto'],
+    tags: '',
   });
   const [createRoti, { loading, error, data }] = useMutation(
     CREATE_ROTI_MUTATION,
@@ -52,36 +54,8 @@ export default function CreateRoti() {
       //refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
     }
   );
-
-  function handleSubmit(e){
-    
-    //console.log(e);
-    async (e) => {
-          e.preventDefault();
-          // Submit the inputfields to the backend:
-          const res = await createRoti();
-          clearForm();
-          // Go to that product's page!
-          Router.push({
-            pathname: `/roti/${res.data.createRoti.id}`,
-          });
-        }
-  };
-
-  function handleTagChange(evt) {
-    //setTitle(evt.target.value)
-    console.log(evt);
-  };
-
-  const getTags = (tags) => {
-    //setTags(tags);
-    console.log("tags parent");
-    console.log(tags);
-    console.log("-----------");
-  }
-  function showTag(){
-    console.log(tags)
-  }
+  
+  //console.log(inputs);
 
   return (
 
@@ -95,9 +69,9 @@ export default function CreateRoti() {
           const res = await createRoti();
           clearForm();
           // Go to that product's page!
-          // Router.push({
-          //   pathname: `/roti/${res.data.createRoti.id}`,
-          // });
+          Router.push({
+            pathname: `/surveys/results/${res.data.createRoti.id}`,
+          });
         }
       }
       onKeyPress={(e) =>{ e.key === 'Enter' && e.preventDefault(); }}
@@ -105,24 +79,26 @@ export default function CreateRoti() {
       <DisplayError error={error} />
       <h2>Create New ROTI</h2>
       <fieldset 
-        // disabled={loading} 
-        // aria-busy={loading}
+        disabled={loading} 
+        aria-busy={loading}
       >
-        <label htmlFor="name">
+        <label htmlFor="subject">
           ROTI Subject
           <input
+            required
             type="text"
             maxLength="20" 
             id="subject"
             name="subject"
             placeholder="Roti subject or event name"
-            value={inputs.name}
+            value={inputs.subject}
             onChange={handleChange}
           />
         </label>
         <label htmlFor="description">
           Description
           <textarea
+            required
             id="description"
             name="description"
             placeholder="Description"
@@ -139,11 +115,18 @@ export default function CreateRoti() {
           <label>
             Add Tags
             {/* <TagsInput onChange={getTags}></TagsInput> */}
-            <TagsInput onChange={handleChange}></TagsInput>
+            <TagsInput 
+              name="tags" 
+              onChange={handleChange}
+              onReset={clearForm}
+              //value={inputs.tags}
+            >
+            </TagsInput>
           </label>
           <label htmlFor="shorturl">
             Short URL (max 20 characters)
             <input
+              required
               maxLength="20"            
               id="shorturl"
               name="shorturl"
@@ -153,7 +136,6 @@ export default function CreateRoti() {
             />
           </label>
         <button type="submit" >+ Add Roti</button>
-        <button type="button" onClick={showTag} >+show</button>
       </fieldset>
     </Form>
   );

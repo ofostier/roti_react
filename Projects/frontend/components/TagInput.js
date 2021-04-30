@@ -7,14 +7,14 @@ import TagsInputStyles from "./styles/TagInputStyles";
 const TagsInput = (props) => {
   const [tags, setTags] = React.useState([]);
   const addTags = event => {
-    if (event.key === "Enter" && event.target.value !== "") {
-        console.log("Add tag");
+    if ((event.key === "Enter" || event.type=== "blur") && event.target.value !== "") {
+        //console.log("Add tag");
         setTags([...tags, event.target.value]);
 
         // TODO: [RR-5] Is it the better to pass state from child to parent ?
         let mytags = {target:[]};
         mytags["target"]["value"] = [...tags, event.target.value];
-        mytags["target"]["name"] = "inputTag";
+        mytags["target"]["name"] = props.name;
         props.onChange(mytags);
         /////////////////////////// end TODO
 
@@ -23,13 +23,20 @@ const TagsInput = (props) => {
   };
   const removeTags = index => {
     setTags([...tags.filter(tag => tags.indexOf(tag) !== index)]);
-    console.log(tags);
-
+    //console.log(tags);
     let mytags = {target:[]};
         mytags["target"]["value"] = [...tags.filter(tag => tags.indexOf(tag) !== index)]; //[...tags, event.target.value];
-        mytags["target"]["name"] = "inputTag";
+        mytags["target"]["name"] = props.name;
         props.onChange(mytags);
   };
+
+  const clearInput = event => {
+    console.log(event);
+    console.log("should clear iinpuut");
+  };
+  const Focus = () => {
+    console.log("FOCUUUUS");
+  }
 
   return (
       <TagsInputStyles>
@@ -53,6 +60,15 @@ const TagsInput = (props) => {
                 }
               }
               placeholder="Press enter to add tags"
+              ///value={props.value}
+              onBlur={event => {
+                addTags(event);
+                }
+              }
+              onReset={event => {
+                clearInput(event);
+              }
+            }
           />
       </TagsInputStyles>
   );

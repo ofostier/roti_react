@@ -17,7 +17,6 @@ export default function useForm(initial = {}) {
   // }
 
   function handleChange(e) {
-    console.log(e.target);
     
     let { value, name, type } = e.target;
     if (type === 'number') {
@@ -30,8 +29,16 @@ export default function useForm(initial = {}) {
     if (name === 'shorturl') {
       value = value.replace(/\s/g, '-')
     }
-    console.log(">>>> " + name);
 
+    if (value === '') {
+      value = undefined;
+    }
+    if (name === 'tags') {
+      value = value.join();
+    }
+
+    console.log(value);
+    
     setInputs({
       // copy the existing state
       ...inputs,

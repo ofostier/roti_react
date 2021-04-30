@@ -31,6 +31,7 @@ const SINGLE_ROTI_QUERY = gql`
       subject
       description
       shorturl
+      tags
       id
       createdAt
       status
