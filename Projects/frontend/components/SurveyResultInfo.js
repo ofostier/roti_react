@@ -83,6 +83,24 @@ const BlockListSectionLabel = styled.div`
     border: 1px solid var(--grey);
   }
 `;
+const TagStyles = styled.button`
+  
+    background-color: var(--lightGrey);
+    //box-shadow: 0 0 5px 3px rgba(0, 0, 255, 0.05);
+    box-shadow: 1px 1px 4px var(--grey);
+    color: var(--black);
+    font-size: 1rem;
+    padding:0.5rem 1rem;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid var(--grey);
+    :hover {
+      color:white;
+      background-color: var(--grey)
+    }
+`;
 
 const LinkStyles = styled.div`
   border-bottom: 1px solid var(--lightGrey);
@@ -129,6 +147,7 @@ export default function SurveyResultInfo( {me, roti} ) {
   //console.log(roti);
   console.log(roti.tags);
   const tags = (roti.tags!= null && roti.tags.length>0)?roti.tags.split(','):[];
+
   return (
     <BlockInfoStyles>
       <BlockListSection>
@@ -149,7 +168,7 @@ export default function SurveyResultInfo( {me, roti} ) {
           <p>
             {
               tags.map((value, key) => (
-                <em key={key}>{value} </em>
+                <TagStyles key={key}>{value}</TagStyles>
               ))
             }
           </p>

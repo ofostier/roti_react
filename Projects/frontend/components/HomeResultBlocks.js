@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { da } from 'date-fns/locale';
 
 const BlockResultStyles = styled.div`
@@ -32,6 +33,9 @@ const NewRotiButtonStyles = styled.button`
   padding: 1rem 1.5rem;
   margin-top: 10px;
   border-radius: 4px;
+  a {
+    color: white;
+  }
 `;
 
 function getCountVotes(data){
@@ -65,8 +69,9 @@ export default function HomeResultBlock( {me} ) {
           <label>PLAYERS</label>
         </div>
       </BlockResultStyles>
-      // TODO: [RR-3] Create action on button CREATET ROTI
-      <NewRotiButtonStyles>Create New ROTI</NewRotiButtonStyles>
+      <NewRotiButtonStyles>
+        <Link href={`/create`}>Create New ROTI</Link>
+      </NewRotiButtonStyles>
       
     </>
   )

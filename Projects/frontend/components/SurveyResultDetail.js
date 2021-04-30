@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import Rating from '@material-ui/lab/Rating';
+import { TagCloud } from 'react-tagcloud'
+import getTagsList from '../lib/getTagsList';
 
 const GridStyles = styled.div`
   //display: grid;
@@ -146,6 +148,22 @@ export default function SurveyResultDetail( {roti} ) {
   const note = roti._votesMeta.count > 0 ? getTotalNotes(roti) / roti._votesMeta.count: 0;
   const mood = roti._votesMeta.count > 0 ? getTotalMood(roti) / roti._votesMeta.count: 0;
 
+  // const tagList = [
+  //   { value: 'JavaScript', count: 38 },
+  //   { value: 'React', count: 30 },
+  //   { value: 'Nodejs', count: 28 },
+  //   { value: 'Express.js', count: 25 },
+  //   { value: 'HTML5', count: 33 },
+  //   { value: 'MongoDB', count: 18 },
+  //   { value: 'CSS3', count: 20 },
+  // ]; 
+  
+  const dataCloud = getTagsList(roti);
+  const optionsCloud = {
+    luminosity: 'dark',
+    hue: 'orange',
+  }
+
   return (
     <GridStyles>
       <h1>
@@ -203,6 +221,15 @@ export default function SurveyResultDetail( {roti} ) {
             </div>
           </GridResultsDetailsStyles>
           ))}
+        
+          <TagCloud
+            minSize={14}
+            maxSize={40}
+            tags={dataCloud}
+            colorOptions={optionsCloud}
+            onClick={tag => alert(`'${tag.value}' was selected!`)}
+          />
     </GridStyles>
   )
 }
+

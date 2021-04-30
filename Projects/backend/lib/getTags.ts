@@ -4,6 +4,6 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 export default function getTags(tags) {
-  console.log(tags);
+  console.log(tags)
   return "getTags function";
 }

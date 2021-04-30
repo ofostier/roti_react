@@ -39,6 +39,7 @@
     "react-notifications": "^1.7.2",
     "react-phone-input-2": "^2.14.0",
     "react-rating-stars-component": "^2.2.0",
+    "react-tagcloud": "^2.1.1",
     "styled-components": "^5.2.3",
     "use-dencrypt-effect": "^1.0.2"
   },
