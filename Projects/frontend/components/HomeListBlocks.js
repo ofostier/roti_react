@@ -89,7 +89,7 @@ function RotiItem({ rotiItem }) {
           name="note" 
           size="large"
           precision={0.5}
-          defaultValue={getTotalNotes(rotiItem) / rotiItem._votesMeta.count}
+          defaultValue={rotiItem._votesMeta.count>0?getTotalNotes(rotiItem) / rotiItem._votesMeta.count:0}
           readOnly
         ></Rating>
       </div>
