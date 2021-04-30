@@ -12,8 +12,10 @@ export default function Nav() {
   return (
     <NavStyles>
       <Link href="/">Home</Link>
+      <Link href="/rotis">Rotis</Link>
       {user && (
         <>
+          <Link href="/create">Create</Link>
           <Link href="/account">Account</Link>
           <SignOut />
         </>

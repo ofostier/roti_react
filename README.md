@@ -1,7 +1,10 @@
-# TEMPLATE_REACT_NODE_PROFILE
+# ROTI REACT
+![very good|512x397,20%](./Projects/frontend/public/static/roti.png)
 
-This is a template project based on REACTJS, NODE and KeystoneJS
-Inspired from [WESBOS Advanced-React](https://github.com/wesbos/Advanced-React/blob/master/stepped-solutions/57/frontend/Checkout.js)
+**This project is ROTI APP VOTING**
+From [https://github.com/ofostier/template_react_node_profile](https://github.com/ofostier/template_react_node_profile)
+
+Based on REACTJS, NODE and KeystoneJS
 
 With this template you can start a web site with :
 - User authentication (login / logout)
@@ -57,13 +60,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Next Steps Backlog :
 
-- Password Change on user account ✅
-- Include README.md on Home Page ✅
-- Fix Signout With useForm ✅
-- Fix Nav bar when resize window width ✅
-- Password Reset Form ✅
-- Roles
-- And More
+- Perform a great ROTI Creation Form ✅
 
 
 ## Learn More

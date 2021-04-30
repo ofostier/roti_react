@@ -19,7 +19,7 @@ export default function SignOut() {
   });
   return (
     <button type="button" onClick={signout}>
-      Sign Out !
+      SignOut
     </button>
   );
 }

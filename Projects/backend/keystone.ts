@@ -5,6 +5,8 @@ import {
   statelessSessions,
 } from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
+import { Roti } from './schemas/Roti';
+import { Vote } from './schemas/Vote';
 // import { Product } from './schemas/Product';
 // import { ProductImage } from './schemas/ProductImage';
 // import { insertSeedData } from './seed-data';
@@ -51,6 +53,8 @@ export default withAuth(
     lists: createSchema({
       // Schema items go in here
       User,
+      Roti,
+      Vote,
       // Product,
       // ProductImage,
     }),

@@ -17,6 +17,7 @@ export default function useForm(initial = {}) {
   // }
 
   function handleChange(e) {
+    
     let { value, name, type } = e.target;
     if (type === 'number') {
       value = parseInt(value);
@@ -24,6 +25,19 @@ export default function useForm(initial = {}) {
     if (type === 'file') {
       [value] = e.target.files;
     }
+
+    if (name === 'shorturl') {
+      value = value.replace(/\s/g, '-')
+    }
+
+    if (value === '') {
+      value = undefined;
+    }
+    if (name === 'tags') {
+      value = value.join();
+    }
+
+    console.log(value);
     
     setInputs({
       // copy the existing state

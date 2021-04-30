@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { sitename } from '../config';
 import Nav from './Nav';
 
 const Logo = styled.h1`
@@ -38,7 +39,7 @@ export default function Header() {
     <HeaderStyles>
       <div className="bar">
         <Logo>
-          <Link href="/">My Template</Link>
+          <Link href="/">{sitename}</Link>
         </Logo>
         <Nav />
       </div>

@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 
-const CURRENT_USER_QUERY = gql`
+const CURRENT_SURVEY_QUERY = gql`
   query {
     authenticatedItem {
       ... on User {
@@ -13,6 +13,7 @@ const CURRENT_USER_QUERY = gql`
           id
           subject
           description
+          tags
           votes {
             id
             name
@@ -27,9 +28,9 @@ const CURRENT_USER_QUERY = gql`
   }
 `;
 
-export function useUser() {
-  const { data } = useQuery(CURRENT_USER_QUERY);
+export function useSurvey() {
+  const { data } = useQuery(CURRENT_SURVEY_QUERY);
   return data?.authenticatedItem;
 }
 
-export { CURRENT_USER_QUERY };
+export { CURRENT_SURVEY_QUERY };
