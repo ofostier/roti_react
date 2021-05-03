@@ -32,7 +32,7 @@ export const Roti = list(
         { label: 'Availlable', value: 'AVAILABLE' },
         { label: 'Unavailable', value: 'UNAVAILABLE ' },
         { label: 'Closed', value: 'CLOSED' },
-        
+      
       ],
       defaultValue: 'AVAILABLE',
       ui: {
