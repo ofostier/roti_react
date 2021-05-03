@@ -6,11 +6,6 @@ export default function useToggle(initial = {}) {
   const [toggled, setToggle] = useState(initial);
   const initialValues = Object.values(initial).join('');
 
-  // console.log("################## initial");
-  //  console.log(initial);
-  // // console.log(initialValues);
-  // console.log("################## Fin initial");
-
   useEffect(() => {
     // This function runs when the things we are watching change
     setToggle(initial);
