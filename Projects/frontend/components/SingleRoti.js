@@ -2,11 +2,11 @@ import { useQuery, useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
 import styled from 'styled-components';
-//import ItemStyles from './styles/ItemStyles';
+import ItemStyles from './styles/ItemStyles';
 import Title from './styles/Title';
-//import DisplayError from './ErrorMessage';
+import DisplayError from './ErrorMessage';
 import formatDate from '../lib/formatDate';
-//import Rating from '@material-ui/lab/Rating';
+import Rating from '@material-ui/lab/Rating';
 import FormVote from './FormVote';
 import ThxFeedBack from './ThxFeedBack';
 
