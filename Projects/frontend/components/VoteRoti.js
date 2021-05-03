@@ -137,7 +137,7 @@ export default function VoteRoti ({ shorturl }) {
     if (!datacreated) {
       
       return (
-        <FormVote id={Roti.id} status={Roti.status} ></FormVote>
+        <FormVote id={Roti.id}></FormVote>
       )
     }
     return (<ThxFeedBack></ThxFeedBack>)
