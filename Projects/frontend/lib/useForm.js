@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 export default function useForm(initial = {}) {
-  console.log(initial);
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
   const initialValues = Object.values(initial).join('');
@@ -38,7 +37,7 @@ export default function useForm(initial = {}) {
       value = value.join();
     }
 
-    //console.log(value);
+    console.log(value);
     
     setInputs({
       // copy the existing state

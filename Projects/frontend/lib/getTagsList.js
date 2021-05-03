@@ -1,4 +1,5 @@
 export default function getTagsList(data) {
+  //console.log(data);
 
   const list = data.votes.map((value) => value.comment.split(" "));
 
@@ -23,6 +24,7 @@ export default function getTagsList(data) {
   for (let prop in counts){
     final.push({'value':prop, 'count':counts[prop]});
   }
+
   //console.log(final);
   return final;
 }
