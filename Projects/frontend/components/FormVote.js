@@ -48,9 +48,7 @@ const CREATE_VOTE_MUTATION = gql`
   }
 `;
 
-export default function FormVote ({ id, status }) {
-
-  console.log(status)
+export default function FormVote ({ id }) {
   const { inputs, handleChange, clearForm, resetForm } = useForm({
     name: '',
     email: '',
@@ -111,7 +109,6 @@ export default function FormVote ({ id, status }) {
             placeholder="Your Name"
             value={inputs.name}
             onChange={handleChange}
-            disabled = { status==="CLOSED"? 'disabled':'' }
           />
         </label>
         <label htmlFor="email">
@@ -122,7 +119,6 @@ export default function FormVote ({ id, status }) {
             placeholder="Your Email Address"
             value={inputs.email}
             onChange={handleChange}
-            disabled = { status==="CLOSED"? 'disabled':'' }
           />
         </label>
         
@@ -139,7 +135,7 @@ export default function FormVote ({ id, status }) {
             defaultValue={0}
             //value={3}
             onChange={handleChange}
-            disabled = { status==="CLOSED"? 'disabled':'' }
+            //disabled 
           />
         </BlockRating>
         <label htmlFor="comment">
@@ -150,10 +146,9 @@ export default function FormVote ({ id, status }) {
             placeholder="Your comment here"
             value={inputs.comment}
             onChange={handleChange}
-            disabled = { status==="CLOSED"? 'disabled':'' }
           />
         </label>
-        <button type={ status==="CLOSED"? 'button':'submit' }>+ Send my Feedback</button>
+        <button type="submit">+ Send my Feedback</button>
       </fieldset>
     </Form>
   )

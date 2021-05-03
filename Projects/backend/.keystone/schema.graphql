@@ -1,0 +1,920 @@
+input RotiRelateToManyInput {
+  create: [RotiCreateInput]
+  connect: [RotiWhereUniqueInput]
+  disconnect: [RotiWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type User {
+  id: ID!
+  name: String
+  firstname: String
+  email: String
+  password_is_set: Boolean
+  phone: String
+  rotis(where: RotiWhereInput, search: String, sortBy: [SortRotisBy!], orderBy: String, first: Int, skip: Int): [Roti!]!
+  _rotisMeta(where: RotiWhereInput, search: String, sortBy: [SortRotisBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput]
+  OR: [UserWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  firstname: String
+  firstname_not: String
+  firstname_contains: String
+  firstname_not_contains: String
+  firstname_starts_with: String
+  firstname_not_starts_with: String
+  firstname_ends_with: String
+  firstname_not_ends_with: String
+  firstname_i: String
+  firstname_not_i: String
+  firstname_contains_i: String
+  firstname_not_contains_i: String
+  firstname_starts_with_i: String
+  firstname_not_starts_with_i: String
+  firstname_ends_with_i: String
+  firstname_not_ends_with_i: String
+  firstname_in: [String]
+  firstname_not_in: [String]
+  email: String
+  email_not: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  email_i: String
+  email_not_i: String
+  email_contains_i: String
+  email_not_contains_i: String
+  email_starts_with_i: String
+  email_not_starts_with_i: String
+  email_ends_with_i: String
+  email_not_ends_with_i: String
+  email_in: [String]
+  email_not_in: [String]
+  password_is_set: Boolean
+  phone: String
+  phone_not: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  phone_i: String
+  phone_not_i: String
+  phone_contains_i: String
+  phone_not_contains_i: String
+  phone_starts_with_i: String
+  phone_not_starts_with_i: String
+  phone_ends_with_i: String
+  phone_not_ends_with_i: String
+  phone_in: [String]
+  phone_not_in: [String]
+
+  """ condition must be true for all nodes """
+  rotis_every: RotiWhereInput
+
+  """ condition must be true for at least 1 node """
+  rotis_some: RotiWhereInput
+
+  """ condition must be false for all nodes """
+  rotis_none: RotiWhereInput
+}
+
+input UserWhereUniqueInput {
+  id: ID!
+}
+
+enum SortUsersBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  firstname_ASC
+  firstname_DESC
+  email_ASC
+  email_DESC
+  phone_ASC
+  phone_DESC
+  rotis_ASC
+  rotis_DESC
+}
+
+input UserUpdateInput {
+  name: String
+  firstname: String
+  email: String
+  password: String
+  phone: String
+  rotis: RotiRelateToManyInput
+}
+
+input UsersUpdateInput {
+  id: ID!
+  data: UserUpdateInput
+}
+
+input UserCreateInput {
+  name: String
+  firstname: String
+  email: String
+  password: String
+  phone: String
+  rotis: RotiRelateToManyInput
+}
+
+input UsersCreateInput {
+  data: UserCreateInput
+}
+
+input UserRelateToOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+  disconnect: UserWhereUniqueInput
+  disconnectAll: Boolean
+}
+
+input VoteRelateToManyInput {
+  create: [VoteCreateInput]
+  connect: [VoteWhereUniqueInput]
+  disconnect: [VoteWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type Roti {
+  id: ID!
+  subject: String
+  description: String
+  shorturl: String
+  datecreated: String
+  status: String
+  user: User
+  votes(where: VoteWhereInput, search: String, sortBy: [SortVotesBy!], orderBy: String, first: Int, skip: Int): [Vote!]!
+  _votesMeta(where: VoteWhereInput, search: String, sortBy: [SortVotesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  tags: String
+  updatedAt: String
+  createdAt: String
+}
+
+input RotiWhereInput {
+  AND: [RotiWhereInput]
+  OR: [RotiWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  subject: String
+  subject_not: String
+  subject_contains: String
+  subject_not_contains: String
+  subject_starts_with: String
+  subject_not_starts_with: String
+  subject_ends_with: String
+  subject_not_ends_with: String
+  subject_i: String
+  subject_not_i: String
+  subject_contains_i: String
+  subject_not_contains_i: String
+  subject_starts_with_i: String
+  subject_not_starts_with_i: String
+  subject_ends_with_i: String
+  subject_not_ends_with_i: String
+  subject_in: [String]
+  subject_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+  shorturl: String
+  shorturl_not: String
+  shorturl_contains: String
+  shorturl_not_contains: String
+  shorturl_starts_with: String
+  shorturl_not_starts_with: String
+  shorturl_ends_with: String
+  shorturl_not_ends_with: String
+  shorturl_i: String
+  shorturl_not_i: String
+  shorturl_contains_i: String
+  shorturl_not_contains_i: String
+  shorturl_starts_with_i: String
+  shorturl_not_starts_with_i: String
+  shorturl_ends_with_i: String
+  shorturl_not_ends_with_i: String
+  shorturl_in: [String]
+  shorturl_not_in: [String]
+  datecreated: String
+  datecreated_not: String
+  datecreated_lt: String
+  datecreated_lte: String
+  datecreated_gt: String
+  datecreated_gte: String
+  datecreated_in: [String]
+  datecreated_not_in: [String]
+  status: String
+  status_not: String
+  status_in: [String]
+  status_not_in: [String]
+  user: UserWhereInput
+  user_is_null: Boolean
+
+  """ condition must be true for all nodes """
+  votes_every: VoteWhereInput
+
+  """ condition must be true for at least 1 node """
+  votes_some: VoteWhereInput
+
+  """ condition must be false for all nodes """
+  votes_none: VoteWhereInput
+  tags: String
+  tags_not: String
+  tags_contains: String
+  tags_not_contains: String
+  tags_starts_with: String
+  tags_not_starts_with: String
+  tags_ends_with: String
+  tags_not_ends_with: String
+  tags_i: String
+  tags_not_i: String
+  tags_contains_i: String
+  tags_not_contains_i: String
+  tags_starts_with_i: String
+  tags_not_starts_with_i: String
+  tags_ends_with_i: String
+  tags_not_ends_with_i: String
+  tags_in: [String]
+  tags_not_in: [String]
+  updatedAt: String
+  updatedAt_not: String
+  updatedAt_lt: String
+  updatedAt_lte: String
+  updatedAt_gt: String
+  updatedAt_gte: String
+  updatedAt_in: [String]
+  updatedAt_not_in: [String]
+  createdAt: String
+  createdAt_not: String
+  createdAt_lt: String
+  createdAt_lte: String
+  createdAt_gt: String
+  createdAt_gte: String
+  createdAt_in: [String]
+  createdAt_not_in: [String]
+}
+
+input RotiWhereUniqueInput {
+  id: ID!
+}
+
+enum SortRotisBy {
+  id_ASC
+  id_DESC
+  subject_ASC
+  subject_DESC
+  description_ASC
+  description_DESC
+  shorturl_ASC
+  shorturl_DESC
+  datecreated_ASC
+  datecreated_DESC
+  status_ASC
+  status_DESC
+  user_ASC
+  user_DESC
+  votes_ASC
+  votes_DESC
+  tags_ASC
+  tags_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+input RotiUpdateInput {
+  subject: String
+  description: String
+  shorturl: String
+  datecreated: String
+  status: String
+  user: UserRelateToOneInput
+  votes: VoteRelateToManyInput
+  tags: String
+}
+
+input RotisUpdateInput {
+  id: ID!
+  data: RotiUpdateInput
+}
+
+input RotiCreateInput {
+  subject: String
+  description: String
+  shorturl: String
+  datecreated: String
+  status: String
+  user: UserRelateToOneInput
+  votes: VoteRelateToManyInput
+  tags: String
+}
+
+input RotisCreateInput {
+  data: RotiCreateInput
+}
+
+""" A keystone list """
+type Vote {
+  id: ID!
+  name: String
+  email: String
+  note: String
+  mood: String
+  comment: String
+  rotis(where: RotiWhereInput, search: String, sortBy: [SortRotisBy!], orderBy: String, first: Int, skip: Int): [Roti!]!
+  _rotisMeta(where: RotiWhereInput, search: String, sortBy: [SortRotisBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  updatedAt: String
+  createdAt: String
+}
+
+input VoteWhereInput {
+  AND: [VoteWhereInput]
+  OR: [VoteWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  email: String
+  email_not: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  email_i: String
+  email_not_i: String
+  email_contains_i: String
+  email_not_contains_i: String
+  email_starts_with_i: String
+  email_not_starts_with_i: String
+  email_ends_with_i: String
+  email_not_ends_with_i: String
+  email_in: [String]
+  email_not_in: [String]
+  note: String
+  note_not: String
+  note_in: [String]
+  note_not_in: [String]
+  mood: String
+  mood_not: String
+  mood_in: [String]
+  mood_not_in: [String]
+  comment: String
+  comment_not: String
+  comment_contains: String
+  comment_not_contains: String
+  comment_starts_with: String
+  comment_not_starts_with: String
+  comment_ends_with: String
+  comment_not_ends_with: String
+  comment_i: String
+  comment_not_i: String
+  comment_contains_i: String
+  comment_not_contains_i: String
+  comment_starts_with_i: String
+  comment_not_starts_with_i: String
+  comment_ends_with_i: String
+  comment_not_ends_with_i: String
+  comment_in: [String]
+  comment_not_in: [String]
+
+  """ condition must be true for all nodes """
+  rotis_every: RotiWhereInput
+
+  """ condition must be true for at least 1 node """
+  rotis_some: RotiWhereInput
+
+  """ condition must be false for all nodes """
+  rotis_none: RotiWhereInput
+  updatedAt: String
+  updatedAt_not: String
+  updatedAt_lt: String
+  updatedAt_lte: String
+  updatedAt_gt: String
+  updatedAt_gte: String
+  updatedAt_in: [String]
+  updatedAt_not_in: [String]
+  createdAt: String
+  createdAt_not: String
+  createdAt_lt: String
+  createdAt_lte: String
+  createdAt_gt: String
+  createdAt_gte: String
+  createdAt_in: [String]
+  createdAt_not_in: [String]
+}
+
+input VoteWhereUniqueInput {
+  id: ID!
+}
+
+enum SortVotesBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  email_ASC
+  email_DESC
+  note_ASC
+  note_DESC
+  mood_ASC
+  mood_DESC
+  comment_ASC
+  comment_DESC
+  rotis_ASC
+  rotis_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+input VoteUpdateInput {
+  name: String
+  email: String
+  note: String
+  mood: String
+  comment: String
+  rotis: RotiRelateToManyInput
+}
+
+input VotesUpdateInput {
+  id: ID!
+  data: VoteUpdateInput
+}
+
+input VoteCreateInput {
+  name: String
+  email: String
+  note: String
+  mood: String
+  comment: String
+  rotis: RotiRelateToManyInput
+}
+
+input VotesCreateInput {
+  data: VoteCreateInput
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+type _ListAccess {
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'create' operations.
+  NOTE: 'create' can only return a Boolean.
+  It is not possible to specify a declarative Where clause for this
+  operation
+  """
+  create: Boolean
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'read' operations.
+  """
+  read: JSON
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'update' operations.
+  """
+  update: JSON
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'delete' operations.
+  """
+  delete: JSON
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'auth' operations.
+  """
+  auth: JSON
+}
+
+type _ListQueries {
+  """Single-item query name"""
+  item: String
+
+  """All-items query name"""
+  list: String
+
+  """List metadata query name"""
+  meta: String
+}
+
+type _ListMutations {
+  """Create mutation name"""
+  create: String
+
+  """Create many mutation name"""
+  createMany: String
+
+  """Update mutation name"""
+  update: String
+
+  """Update many mutation name"""
+  updateMany: String
+
+  """Delete mutation name"""
+  delete: String
+
+  """Delete many mutation name"""
+  deleteMany: String
+}
+
+type _ListInputTypes {
+  """Input type for matching multiple items"""
+  whereInput: String
+
+  """Input type for matching a unique item"""
+  whereUniqueInput: String
+
+  """Create mutation input type name"""
+  createInput: String
+
+  """Create many mutation input type name"""
+  createManyInput: String
+
+  """Update mutation name input"""
+  updateInput: String
+
+  """Update many mutation name input"""
+  updateManyInput: String
+}
+
+type _ListSchemaFields {
+  """The path of the field in its list"""
+  path: String
+
+  """The name of the field in its list"""
+  name: String @deprecated(reason: "Use `path` instead")
+
+  """The field type (ie, Checkbox, Text, etc)"""
+  type: String
+}
+
+type _ListSchemaRelatedFields {
+  """The typename as used in GraphQL queries"""
+  type: String
+
+  """A list of GraphQL field names"""
+  fields: [String]
+}
+
+type _ListSchema {
+  """The typename as used in GraphQL queries"""
+  type: String
+
+  """
+  Top level GraphQL query names which either return this type, or
+  provide aggregate information about this type
+  """
+  queries: _ListQueries
+
+  """Top-level GraphQL mutation names"""
+  mutations: _ListMutations
+
+  """Top-level GraphQL input types"""
+  inputTypes: _ListInputTypes
+
+  """Information about fields defined on this list"""
+  fields(where: _ListSchemaFieldsInput): [_ListSchemaFields]
+
+  """
+  Information about fields on other types which return this type, or
+  provide aggregate information about this type
+  """
+  relatedFields: [_ListSchemaRelatedFields]
+}
+
+type _ListMeta {
+  """The Keystone list key"""
+  key: String
+
+  """The Keystone List name"""
+  name: String @deprecated(reason: "Use `key` instead")
+
+  """The list's user-facing description"""
+  description: String
+
+  """The list's display name in the Admin UI"""
+  label: String
+
+  """The list's singular display name"""
+  singular: String
+
+  """The list's plural display name"""
+  plural: String
+
+  """The list's data path"""
+  path: String
+
+  """Access control configuration for the currently authenticated request"""
+  access: _ListAccess
+
+  """Information on the generated GraphQL schema"""
+  schema: _ListSchema
+}
+
+type _QueryMeta {
+  count: Int
+}
+
+input _ksListsMetaInput {
+  key: String
+
+  """Whether this is an auxiliary helper list"""
+  auxiliary: Boolean
+}
+
+input _ListSchemaFieldsInput {
+  type: String
+}
+
+type Mutation {
+  """ Create a single User item. """
+  createUser(data: UserCreateInput): User
+
+  """ Create multiple User items. """
+  createUsers(data: [UsersCreateInput]): [User]
+
+  """ Update a single User item by ID. """
+  updateUser(id: ID!, data: UserUpdateInput): User
+
+  """ Update multiple User items by ID. """
+  updateUsers(data: [UsersUpdateInput]): [User]
+
+  """ Delete a single User item by ID. """
+  deleteUser(id: ID!): User
+
+  """ Delete multiple User items by ID. """
+  deleteUsers(ids: [ID!]): [User]
+
+  """ Create a single Roti item. """
+  createRoti(data: RotiCreateInput): Roti
+
+  """ Create multiple Roti items. """
+  createRotis(data: [RotisCreateInput]): [Roti]
+
+  """ Update a single Roti item by ID. """
+  updateRoti(id: ID!, data: RotiUpdateInput): Roti
+
+  """ Update multiple Roti items by ID. """
+  updateRotis(data: [RotisUpdateInput]): [Roti]
+
+  """ Delete a single Roti item by ID. """
+  deleteRoti(id: ID!): Roti
+
+  """ Delete multiple Roti items by ID. """
+  deleteRotis(ids: [ID!]): [Roti]
+
+  """ Create a single Vote item. """
+  createVote(data: VoteCreateInput): Vote
+
+  """ Create multiple Vote items. """
+  createVotes(data: [VotesCreateInput]): [Vote]
+
+  """ Update a single Vote item by ID. """
+  updateVote(id: ID!, data: VoteUpdateInput): Vote
+
+  """ Update multiple Vote items by ID. """
+  updateVotes(data: [VotesUpdateInput]): [Vote]
+
+  """ Delete a single Vote item by ID. """
+  deleteVote(id: ID!): Vote
+
+  """ Delete multiple Vote items by ID. """
+  deleteVotes(ids: [ID!]): [Vote]
+  authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult!
+  createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
+  endSession: Boolean!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+union AuthenticatedItem = User
+
+union UserAuthenticationWithPasswordResult = UserAuthenticationWithPasswordSuccess | UserAuthenticationWithPasswordFailure
+
+type UserAuthenticationWithPasswordSuccess {
+  sessionToken: String!
+  item: User!
+}
+
+type UserAuthenticationWithPasswordFailure {
+  code: PasswordAuthErrorCode!
+  message: String!
+}
+
+enum PasswordAuthErrorCode {
+  FAILURE
+  IDENTITY_NOT_FOUND
+  SECRET_NOT_SET
+  MULTIPLE_IDENTITY_MATCHES
+  SECRET_MISMATCH
+}
+
+input CreateInitialUserInput {
+  name: String
+  email: String
+  password: String
+}
+
+type Query {
+  """ Search for all User items which match the where clause. """
+  allUsers(where: UserWhereInput, search: String, sortBy: [SortUsersBy!], orderBy: String, first: Int, skip: Int): [User]
+
+  """ Search for the User item with the matching ID. """
+  User(where: UserWhereUniqueInput!): User
+
+  """ Perform a meta-query on all User items which match the where clause. """
+  _allUsersMeta(where: UserWhereInput, search: String, sortBy: [SortUsersBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the User list. """
+  _UsersMeta: _ListMeta
+
+  """ Search for all Roti items which match the where clause. """
+  allRotis(where: RotiWhereInput, search: String, sortBy: [SortRotisBy!], orderBy: String, first: Int, skip: Int): [Roti]
+
+  """ Search for the Roti item with the matching ID. """
+  Roti(where: RotiWhereUniqueInput!): Roti
+
+  """ Perform a meta-query on all Roti items which match the where clause. """
+  _allRotisMeta(where: RotiWhereInput, search: String, sortBy: [SortRotisBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Roti list. """
+  _RotisMeta: _ListMeta
+
+  """ Search for all Vote items which match the where clause. """
+  allVotes(where: VoteWhereInput, search: String, sortBy: [SortVotesBy!], orderBy: String, first: Int, skip: Int): [Vote]
+
+  """ Search for the Vote item with the matching ID. """
+  Vote(where: VoteWhereUniqueInput!): Vote
+
+  """ Perform a meta-query on all Vote items which match the where clause. """
+  _allVotesMeta(where: VoteWhereInput, search: String, sortBy: [SortVotesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Vote list. """
+  _VotesMeta: _ListMeta
+
+  """ Retrieve the meta-data for all lists. """
+  _ksListsMeta(where: _ksListsMetaInput): [_ListMeta]
+  authenticatedItem: AuthenticatedItem
+  keystone: KeystoneMeta!
+}
+
+type KeystoneMeta {
+  adminMeta: KeystoneAdminMeta!
+}
+
+type KeystoneAdminMeta {
+  enableSignout: Boolean!
+  enableSessionItem: Boolean!
+  lists: [KeystoneAdminUIListMeta!]!
+  list(key: String!): KeystoneAdminUIListMeta
+}
+
+type KeystoneAdminUIListMeta {
+  key: String!
+  itemQueryName: String!
+  listQueryName: String!
+  hideCreate: Boolean!
+  hideDelete: Boolean!
+  path: String!
+  label: String!
+  singular: String!
+  plural: String!
+  description: String
+  initialColumns: [String!]!
+  pageSize: Int!
+  labelField: String!
+  fields: [KeystoneAdminUIFieldMeta!]!
+  initialSort: KeystoneAdminUISort
+  isHidden: Boolean!
+}
+
+type KeystoneAdminUIFieldMeta {
+  path: String!
+  label: String!
+  isOrderable: Boolean!
+  fieldMeta: JSON
+  viewsIndex: Int!
+  customViewsIndex: Int
+  createView: KeystoneAdminUIFieldMetaCreateView!
+  listView: KeystoneAdminUIFieldMetaListView!
+  itemView(id: ID!): KeystoneAdminUIFieldMetaItemView
+}
+
+type KeystoneAdminUIFieldMetaCreateView {
+  fieldMode: KeystoneAdminUIFieldMetaCreateViewFieldMode!
+}
+
+enum KeystoneAdminUIFieldMetaCreateViewFieldMode {
+  edit
+  hidden
+}
+
+type KeystoneAdminUIFieldMetaListView {
+  fieldMode: KeystoneAdminUIFieldMetaListViewFieldMode!
+}
+
+enum KeystoneAdminUIFieldMetaListViewFieldMode {
+  read
+  hidden
+}
+
+type KeystoneAdminUIFieldMetaItemView {
+  fieldMode: KeystoneAdminUIFieldMetaItemViewFieldMode!
+}
+
+enum KeystoneAdminUIFieldMetaItemViewFieldMode {
+  edit
+  read
+  hidden
+}
+
+type KeystoneAdminUISort {
+  field: String!
+  direction: KeystoneAdminUISortDirection!
+}
+
+enum KeystoneAdminUISortDirection {
+  ASC
+  DESC
+}
