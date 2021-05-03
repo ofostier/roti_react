@@ -1,10 +1,21 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
 import Link from 'next/link';
 import styled from 'styled-components';
 import { serverUrl } from '../config';
-import { FontAwesomeIcon,  } from '@fortawesome/react-fontawesome'
-import { faShareSquare, faUserCircle, faToggleOn, faTags, faLink, faCopy } from '@fortawesome/free-solid-svg-icons'
+import fontawesome from '@fortawesome/fontawesome';
+import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome';
+import { faCoffee, faShareSquare, faUserCircle, faToggleOn, faToggleOff, faTags, faLink, faCopy } from '@fortawesome/free-solid-svg-icons';
+import useToggle from '../lib/useToggle';
+import ToggleButton from './ToggleButton';
 
+const ToggleStyle = styled(FontAwesomeIcon)
+.attrs({
+  size: "2x", //props => props.iconsize || "5x"
+})
+`
+  
+`;
+fontawesome.library.add(faUserCircle, faCoffee, faToggleOff, faToggleOn);
 
 const BlockInfoStyles = styled.div`
   flex: 1;
@@ -32,6 +43,12 @@ const BlockListSection = styled.div`
   vertical-align: baseline;
   color: var(--black);
   border-bottom: 1px solid var(--lightGrey);
+  .toggle-on {
+    color: green;
+  }
+  .toggle-off {
+    color: var(--red);
+  }
 
 `;
 
@@ -135,7 +152,10 @@ const LinkStyles = styled.div`
     text-align: left;
     //width: max-content;
     //height: max-content;
-}
+  }
+  :focus {
+    color: red;
+  }
 `;
 
 function copyUrl(){
@@ -143,11 +163,19 @@ function copyUrl(){
 }
 
 export default function SurveyResultInfo( {me, roti} ) {
+//useToggle
+  const [toggle, setToggle] = useState("toggle-on");
+  const { toggled, handleClick} = useToggle({
+    actif: roti.status
+  });
+  // console.log("--------------");
+  // console.log(toggled);
+  // console.log("--------------");
   //console.log(me);
   //console.log(roti);
-  console.log(roti.tags);
+  //console.log(roti.tags);
   const tags = (roti.tags!= null && roti.tags.length>0)?roti.tags.split(','):[];
-
+  // TODO: [RR-6] Create activation/deeactivation button for ROTI
   return (
     <BlockInfoStyles>
       <BlockListSection>
@@ -159,7 +187,18 @@ export default function SurveyResultInfo( {me, roti} ) {
         <BlockListSectionLabel>Shared document<p>(None)</p></BlockListSectionLabel>
       </BlockListSection>
       <BlockListSection>
-        <FontAwesomeIcon icon={faToggleOn} size="2x" /> 
+        {/* <a onClick={() =>setToggle(toggle==="toggle-on"?"toggle-off":"toggle-on")}> */}
+        <ToggleButton
+          //onClick={handleClick}
+          name="status"
+          id = "status"
+          className={toggle} 
+          icon={toggle} size="2x" 
+          value = {toggled}
+          state = {roti.status}
+          setId = {roti.id}
+        >
+        </ToggleButton>
         <BlockListSectionLabel>Status<p>{roti.status}</p></BlockListSectionLabel>
       </BlockListSection>
       <BlockListSection>
@@ -180,7 +219,7 @@ export default function SurveyResultInfo( {me, roti} ) {
         <BlockListSectionLabel>Link
           <LinkStyles>
           <span>{serverUrl}/{roti.shorturl}</span>
-          <FontAwesomeIcon onClick={() => {navigator.clipboard.writeText(roti.shorturl)}} icon={faCopy} size="2x" />
+          <FontAwesomeIcon onClick={() => {navigator.clipboard.writeText(serverUrl +"/r/"+ roti.shorturl)}} icon={faCopy} size="2x" />
           
           </LinkStyles>
         </BlockListSectionLabel>

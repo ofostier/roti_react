@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 //import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+//import StarBorderIcon from '@material-ui/icons/StarBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-import Typography from '@material-ui/core/Typography';
+//import Typography from '@material-ui/core/Typography';
 
 
 const style = {
