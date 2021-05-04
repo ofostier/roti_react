@@ -216,7 +216,7 @@ export default function SurveyResultInfo( {me, roti} ) {
         <FontAwesomeIcon icon={faLink} size="2x" /> 
         <BlockListSectionLabel>Link
           <LinkStyles>
-          <span>{serverUrl}/{roti.shorturl}</span>
+          <span>{serverUrl}/r/{roti.shorturl}</span>
           <FontAwesomeIcon onClick={() => {navigator.clipboard.writeText(serverUrl +"/r/"+ roti.shorturl)}} icon={faCopy} size="2x" />
           
           </LinkStyles>

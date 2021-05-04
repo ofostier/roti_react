@@ -10,7 +10,9 @@ import Rating from '@material-ui/lab/Rating';
 import FormVote from './FormVote';
 import ThxFeedBack from './ThxFeedBack';
 import { useShortUrl } from './ShortUrl';
+import VoteIsClosed from './VoteIsClosed';
 
+//TODO: [RR-7] Change grid for VoteRoti for RERSPONSIVE capacity
 const RotiStyles = styled.div`
   display: grid;
   grid-auto-columns: 1fr;
@@ -134,6 +136,12 @@ export default function VoteRoti ({ shorturl }) {
   }
 
   function UseFormVote (datacreated) {
+    // Check If vote is allreeady closed
+    if (Roti.status != "AVAILABLE"){
+      return (
+        <VoteIsClosed />
+      )
+    }
     if (!datacreated) {
       
       return (
@@ -143,6 +151,7 @@ export default function VoteRoti ({ shorturl }) {
     return (<ThxFeedBack></ThxFeedBack>)
   }
 
+  //TODO: [RR-8] Change 'ROTI's RULES BUTTON to be used correctly
   return (
     <RotiStyles>
       <Head>
