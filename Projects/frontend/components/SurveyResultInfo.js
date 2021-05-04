@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { serverUrl } from '../config';
 import { FontAwesomeIcon,  } from '@fortawesome/react-fontawesome'
 import { faShareSquare, faUserCircle, faToggleOn, faTags, faLink, faCopy } from '@fortawesome/free-solid-svg-icons'
+import ToggleButton from './ToggleButton';
 
 
 const BlockInfoStyles = styled.div`
@@ -147,7 +148,11 @@ export default function SurveyResultInfo( {me, roti} ) {
   //console.log(roti);
   console.log(roti.tags);
   const tags = (roti.tags!= null && roti.tags.length>0)?roti.tags.split(','):[];
-
+  const [toggle, setToggle] = useState("toggle-on");
+  const { toggled, handleClick} = useToggle({
+    actif: roti.status
+  });
+  
   return (
     <BlockInfoStyles>
       <BlockListSection>
@@ -159,7 +164,17 @@ export default function SurveyResultInfo( {me, roti} ) {
         <BlockListSectionLabel>Shared document<p>(None)</p></BlockListSectionLabel>
       </BlockListSection>
       <BlockListSection>
-        <FontAwesomeIcon icon={faToggleOn} size="2x" /> 
+        {/* <FontAwesomeIcon icon={faToggleOn} size="2x" />  */}
+        <ToggleButton
+          //onClick={handleClick}
+          name="status"
+          id = "status"
+          className={toggle} 
+          icon={toggle} size="2x" 
+          value = {toggled}
+          state = {roti.status}
+          setId = {roti.id}
+        />
         <BlockListSectionLabel>Status<p>{roti.status}</p></BlockListSectionLabel>
       </BlockListSection>
       <BlockListSection>
