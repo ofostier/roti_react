@@ -44,7 +44,7 @@ const RotiItemStyles = styled.li`
   grid-template-columns: 1fr 1fr auto;
   margin: 0;
   padding: 0;
-  text-align: left;
+  //text-align: left;
   
   img {
     margin-right: 1rem;
@@ -53,10 +53,11 @@ const RotiItemStyles = styled.li`
   p {
     margin: 0;
   }
-  div {
-    text-align: right;
+  /* div {
+    //text-align: left;
     padding-top: 5px;
-  }
+    width:100%;
+  } */
   em {
     color: var(--grey);
     font-size: 0.9rem;
@@ -69,6 +70,14 @@ const RotiItemStyles = styled.li`
     vertical-align: bottom;
   }
 `;
+const BlockRatingStyles = styled.div`
+  text-align: right;
+
+`;
+const BlockInfoStyles = styled.div`
+  text-align: left;
+
+`;
 
 function RotiItem({ rotiItem }) {
   //const { roti } = rotiItem;
@@ -77,11 +86,14 @@ function RotiItem({ rotiItem }) {
   
   return (
     <RotiItemStyles>
+      <BlockInfoStyles>
       <Link href={`/surveys/results/${rotiItem.id}`}>{rotiItem.subject}</Link>
+      <li>🔴</li>
+      </BlockInfoStyles>
       {/* <div> VOTES
 
       </div> */}
-      <div>
+      <BlockRatingStyles>
         <em>({rotiItem._votesMeta.count}  votes)</em>
         <Rating
           style={{fontSize:25}}
@@ -92,7 +104,7 @@ function RotiItem({ rotiItem }) {
           defaultValue={rotiItem._votesMeta.count>0?getTotalNotes(rotiItem) / rotiItem._votesMeta.count:0}
           readOnly
         ></Rating>
-      </div>
+      </BlockRatingStyles>
     </RotiItemStyles>
   );
 }
