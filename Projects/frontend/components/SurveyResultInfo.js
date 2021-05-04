@@ -4,7 +4,10 @@ import styled from 'styled-components';
 import { serverUrl } from '../config';
 import { FontAwesomeIcon,  } from '@fortawesome/react-fontawesome'
 import { faShareSquare, faUserCircle, faToggleOn, faTags, faLink, faCopy } from '@fortawesome/free-solid-svg-icons'
+<<<<<<< HEAD
 import ToggleButton from './ToggleButton';
+=======
+>>>>>>> parent of 0fe8b4c... Activate button is ok
 
 
 const BlockInfoStyles = styled.div`
@@ -148,11 +151,15 @@ export default function SurveyResultInfo( {me, roti} ) {
   //console.log(roti);
   console.log(roti.tags);
   const tags = (roti.tags!= null && roti.tags.length>0)?roti.tags.split(','):[];
+<<<<<<< HEAD
   const [toggle, setToggle] = useState("toggle-on");
   const { toggled, handleClick} = useToggle({
     actif: roti.status
   });
   
+=======
+
+>>>>>>> parent of 0fe8b4c... Activate button is ok
   return (
     <BlockInfoStyles>
       <BlockListSection>
@@ -164,6 +171,7 @@ export default function SurveyResultInfo( {me, roti} ) {
         <BlockListSectionLabel>Shared document<p>(None)</p></BlockListSectionLabel>
       </BlockListSection>
       <BlockListSection>
+<<<<<<< HEAD
         {/* <FontAwesomeIcon icon={faToggleOn} size="2x" />  */}
         <ToggleButton
           //onClick={handleClick}
@@ -175,6 +183,9 @@ export default function SurveyResultInfo( {me, roti} ) {
           state = {roti.status}
           setId = {roti.id}
         />
+=======
+        <FontAwesomeIcon icon={faToggleOn} size="2x" /> 
+>>>>>>> parent of 0fe8b4c... Activate button is ok
         <BlockListSectionLabel>Status<p>{roti.status}</p></BlockListSectionLabel>
       </BlockListSection>
       <BlockListSection>
