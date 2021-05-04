@@ -97,7 +97,7 @@ const GridResultsDetailsStyles= styled.div`
     //border-bottom: 1px solid var(--lightGrey);
   }
   .label {
-    @font-family: "Roboto";
+    font-family: "Roboto";
     text-align:left;
     font-size: 1.5rem;
     font-weight: 200;
