@@ -166,14 +166,10 @@ export default function SurveyResultInfo( {me, roti} ) {
   const { toggled, handleClick} = useToggle({
     actif: roti.status
   });
-  // console.log("--------------");
-  // console.log(toggled);
-  // console.log("--------------");
-  //console.log(me);
-  //console.log(roti);
-  //console.log(roti.tags);
+  
   const tags = (roti.tags!= null && roti.tags.length>0)?roti.tags.split(','):[];
   // TODO: [RR-6] Create activation/deeactivation button for ROTI
+  //TODO: [RR-9] Add animation when click on copy URL link button
   return (
     <BlockInfoStyles>
       <BlockListSection>
