@@ -31,8 +31,7 @@ export const Roti = list(
         { label: 'Draft', value: 'DRAFT' },
         { label: 'Availlable', value: 'AVAILABLE' },
         { label: 'Unavailable', value: 'UNAVAILABLE ' },
-        { label: 'Closed', value: 'CLOSED' },
-      
+        { label: 'Closed', value: 'CLOSED ' },
       ],
       defaultValue: 'AVAILABLE',
       ui: {

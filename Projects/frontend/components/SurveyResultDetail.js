@@ -144,7 +144,6 @@ function getTotalMood(data){
 
 export default function SurveyResultDetail( {roti} ) {
 
-  //console.log(roti.votes);
   const note = roti._votesMeta.count > 0 ? getTotalNotes(roti) / roti._votesMeta.count: 0;
   const mood = roti._votesMeta.count > 0 ? getTotalMood(roti) / roti._votesMeta.count: 0;
 
