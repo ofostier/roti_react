@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react'
 import Link from 'next/link';
 import styled from 'styled-components';
 import { serverUrl } from '../config';
-//import fontawesome from '@fortawesome/fontawesome';
+import fontawesome from '@fortawesome/fontawesome';
 import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome';
 import { faCoffee, faShareSquare, faUserCircle, faToggleOn, faToggleOff, faTags, faLink, faCopy } from '@fortawesome/free-solid-svg-icons';
 import useToggle from '../lib/useToggle';
@@ -15,7 +15,7 @@ const ToggleStyle = styled(FontAwesomeIcon)
 `
   
 `;
-//fontawesome.library.add(faUserCircle, faCoffee, faToggleOff, faToggleOn);
+fontawesome.library.add(faUserCircle, faCoffee, faToggleOff, faToggleOn);
 
 const BlockInfoStyles = styled.div`
   flex: 1;
