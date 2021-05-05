@@ -97,6 +97,10 @@ export type UserWhereInput = {
   readonly rotis_every?: RotiWhereInput | null;
   readonly rotis_some?: RotiWhereInput | null;
   readonly rotis_none?: RotiWhereInput | null;
+  readonly language?: Scalars['String'] | null;
+  readonly language_not?: Scalars['String'] | null;
+  readonly language_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly language_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
 };
 
 export type UserWhereUniqueInput = {
@@ -115,7 +119,9 @@ export type SortUsersBy =
   | 'phone_ASC'
   | 'phone_DESC'
   | 'rotis_ASC'
-  | 'rotis_DESC';
+  | 'rotis_DESC'
+  | 'language_ASC'
+  | 'language_DESC';
 
 export type UserUpdateInput = {
   readonly name?: Scalars['String'] | null;
@@ -124,6 +130,7 @@ export type UserUpdateInput = {
   readonly password?: Scalars['String'] | null;
   readonly phone?: Scalars['String'] | null;
   readonly rotis?: RotiRelateToManyInput | null;
+  readonly language?: Scalars['String'] | null;
 };
 
 export type UsersUpdateInput = {
@@ -138,6 +145,7 @@ export type UserCreateInput = {
   readonly password?: Scalars['String'] | null;
   readonly phone?: Scalars['String'] | null;
   readonly rotis?: RotiRelateToManyInput | null;
+  readonly language?: Scalars['String'] | null;
 };
 
 export type UsersCreateInput = {
@@ -165,24 +173,24 @@ export type RotiWhereInput = {
   readonly id_not?: Scalars['ID'] | null;
   readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
   readonly id_not_in?: ReadonlyArray<Scalars['ID'] | null> | null;
-  readonly name?: Scalars['String'] | null;
-  readonly name_not?: Scalars['String'] | null;
-  readonly name_contains?: Scalars['String'] | null;
-  readonly name_not_contains?: Scalars['String'] | null;
-  readonly name_starts_with?: Scalars['String'] | null;
-  readonly name_not_starts_with?: Scalars['String'] | null;
-  readonly name_ends_with?: Scalars['String'] | null;
-  readonly name_not_ends_with?: Scalars['String'] | null;
-  readonly name_i?: Scalars['String'] | null;
-  readonly name_not_i?: Scalars['String'] | null;
-  readonly name_contains_i?: Scalars['String'] | null;
-  readonly name_not_contains_i?: Scalars['String'] | null;
-  readonly name_starts_with_i?: Scalars['String'] | null;
-  readonly name_not_starts_with_i?: Scalars['String'] | null;
-  readonly name_ends_with_i?: Scalars['String'] | null;
-  readonly name_not_ends_with_i?: Scalars['String'] | null;
-  readonly name_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly subject?: Scalars['String'] | null;
+  readonly subject_not?: Scalars['String'] | null;
+  readonly subject_contains?: Scalars['String'] | null;
+  readonly subject_not_contains?: Scalars['String'] | null;
+  readonly subject_starts_with?: Scalars['String'] | null;
+  readonly subject_not_starts_with?: Scalars['String'] | null;
+  readonly subject_ends_with?: Scalars['String'] | null;
+  readonly subject_not_ends_with?: Scalars['String'] | null;
+  readonly subject_i?: Scalars['String'] | null;
+  readonly subject_not_i?: Scalars['String'] | null;
+  readonly subject_contains_i?: Scalars['String'] | null;
+  readonly subject_not_contains_i?: Scalars['String'] | null;
+  readonly subject_starts_with_i?: Scalars['String'] | null;
+  readonly subject_not_starts_with_i?: Scalars['String'] | null;
+  readonly subject_ends_with_i?: Scalars['String'] | null;
+  readonly subject_not_ends_with_i?: Scalars['String'] | null;
+  readonly subject_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly subject_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
   readonly description_not?: Scalars['String'] | null;
   readonly description_contains?: Scalars['String'] | null;
@@ -201,6 +209,24 @@ export type RotiWhereInput = {
   readonly description_not_ends_with_i?: Scalars['String'] | null;
   readonly description_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly shorturl?: Scalars['String'] | null;
+  readonly shorturl_not?: Scalars['String'] | null;
+  readonly shorturl_contains?: Scalars['String'] | null;
+  readonly shorturl_not_contains?: Scalars['String'] | null;
+  readonly shorturl_starts_with?: Scalars['String'] | null;
+  readonly shorturl_not_starts_with?: Scalars['String'] | null;
+  readonly shorturl_ends_with?: Scalars['String'] | null;
+  readonly shorturl_not_ends_with?: Scalars['String'] | null;
+  readonly shorturl_i?: Scalars['String'] | null;
+  readonly shorturl_not_i?: Scalars['String'] | null;
+  readonly shorturl_contains_i?: Scalars['String'] | null;
+  readonly shorturl_not_contains_i?: Scalars['String'] | null;
+  readonly shorturl_starts_with_i?: Scalars['String'] | null;
+  readonly shorturl_not_starts_with_i?: Scalars['String'] | null;
+  readonly shorturl_ends_with_i?: Scalars['String'] | null;
+  readonly shorturl_not_ends_with_i?: Scalars['String'] | null;
+  readonly shorturl_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly shorturl_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly datecreated?: Scalars['String'] | null;
   readonly datecreated_not?: Scalars['String'] | null;
   readonly datecreated_lt?: Scalars['String'] | null;
@@ -218,6 +244,24 @@ export type RotiWhereInput = {
   readonly votes_every?: VoteWhereInput | null;
   readonly votes_some?: VoteWhereInput | null;
   readonly votes_none?: VoteWhereInput | null;
+  readonly tags?: Scalars['String'] | null;
+  readonly tags_not?: Scalars['String'] | null;
+  readonly tags_contains?: Scalars['String'] | null;
+  readonly tags_not_contains?: Scalars['String'] | null;
+  readonly tags_starts_with?: Scalars['String'] | null;
+  readonly tags_not_starts_with?: Scalars['String'] | null;
+  readonly tags_ends_with?: Scalars['String'] | null;
+  readonly tags_not_ends_with?: Scalars['String'] | null;
+  readonly tags_i?: Scalars['String'] | null;
+  readonly tags_not_i?: Scalars['String'] | null;
+  readonly tags_contains_i?: Scalars['String'] | null;
+  readonly tags_not_contains_i?: Scalars['String'] | null;
+  readonly tags_starts_with_i?: Scalars['String'] | null;
+  readonly tags_not_starts_with_i?: Scalars['String'] | null;
+  readonly tags_ends_with_i?: Scalars['String'] | null;
+  readonly tags_not_ends_with_i?: Scalars['String'] | null;
+  readonly tags_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly tags_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly updatedAt?: Scalars['String'] | null;
   readonly updatedAt_not?: Scalars['String'] | null;
   readonly updatedAt_lt?: Scalars['String'] | null;
@@ -243,10 +287,12 @@ export type RotiWhereUniqueInput = {
 export type SortRotisBy =
   | 'id_ASC'
   | 'id_DESC'
-  | 'name_ASC'
-  | 'name_DESC'
+  | 'subject_ASC'
+  | 'subject_DESC'
   | 'description_ASC'
   | 'description_DESC'
+  | 'shorturl_ASC'
+  | 'shorturl_DESC'
   | 'datecreated_ASC'
   | 'datecreated_DESC'
   | 'status_ASC'
@@ -255,18 +301,22 @@ export type SortRotisBy =
   | 'user_DESC'
   | 'votes_ASC'
   | 'votes_DESC'
+  | 'tags_ASC'
+  | 'tags_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC';
 
 export type RotiUpdateInput = {
-  readonly name?: Scalars['String'] | null;
+  readonly subject?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
+  readonly shorturl?: Scalars['String'] | null;
   readonly datecreated?: Scalars['String'] | null;
   readonly status?: Scalars['String'] | null;
   readonly user?: UserRelateToOneInput | null;
   readonly votes?: VoteRelateToManyInput | null;
+  readonly tags?: Scalars['String'] | null;
 };
 
 export type RotisUpdateInput = {
@@ -275,12 +325,14 @@ export type RotisUpdateInput = {
 };
 
 export type RotiCreateInput = {
-  readonly name?: Scalars['String'] | null;
+  readonly subject?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
+  readonly shorturl?: Scalars['String'] | null;
   readonly datecreated?: Scalars['String'] | null;
   readonly status?: Scalars['String'] | null;
   readonly user?: UserRelateToOneInput | null;
   readonly votes?: VoteRelateToManyInput | null;
+  readonly tags?: Scalars['String'] | null;
 };
 
 export type RotisCreateInput = {
@@ -470,7 +522,8 @@ export type UserListTypeInfo = {
     | 'email'
     | 'password'
     | 'phone'
-    | 'rotis';
+    | 'rotis'
+    | 'language';
   backing: {
     readonly id: string;
     readonly name?: string | null;
@@ -479,6 +532,7 @@ export type UserListTypeInfo = {
     readonly password?: string | null;
     readonly phone?: string | null;
     readonly rotis?: string | null;
+    readonly language?: string | null;
   };
   inputs: {
     where: UserWhereInput;
@@ -509,22 +563,26 @@ export type RotiListTypeInfo = {
   key: 'Roti';
   fields:
     | 'id'
-    | 'name'
+    | 'subject'
     | 'description'
+    | 'shorturl'
     | 'datecreated'
     | 'status'
     | 'user'
     | 'votes'
+    | 'tags'
     | 'updatedAt'
     | 'createdAt';
   backing: {
     readonly id: string;
-    readonly name?: string | null;
+    readonly subject?: string | null;
     readonly description?: string | null;
+    readonly shorturl?: string | null;
     readonly datecreated?: Date | null;
     readonly status?: string | null;
     readonly user?: string | null;
     readonly votes?: string | null;
+    readonly tags?: string | null;
     readonly updatedAt?: Date | null;
     readonly createdAt?: Date | null;
   };

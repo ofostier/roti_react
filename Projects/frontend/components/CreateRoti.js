@@ -98,7 +98,7 @@ export default function CreateRoti() {
         <label htmlFor="description">
           Description
           <textarea
-            required
+            // required
             id="description"
             name="description"
             placeholder="Description"

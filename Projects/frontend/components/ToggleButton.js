@@ -2,10 +2,11 @@ import { useMutation, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { serverUrl } from '../config';
-import fontawesome from '@fortawesome/fontawesome';
+//import fontawesome from '@fortawesome/fontawesome';
 import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome';
 import { faCoffee, faShareSquare, faUserCircle, faToggleOn, faToggleOff, faTags, faLink, faCopy } from '@fortawesome/free-solid-svg-icons';
 import useToggle from '../lib/useToggle';
+import {CURRENT_USER_QUERY} from './User';
 
 const ToggleStyle = styled(FontAwesomeIcon)
 .attrs({
@@ -20,7 +21,7 @@ const ToggleStyle = styled(FontAwesomeIcon)
   color: var(--red);
 }
 `;
-fontawesome.library.add(faUserCircle, faCoffee, faToggleOff, faToggleOn);
+//fontawesome.library.add(faUserCircle, faCoffee, faToggleOff, faToggleOn);
 
 const UPDATE_ROTI_MUTATION = gql`
   mutation UPDATE_ROTI_MUTATION(
@@ -42,7 +43,11 @@ export default function ToggleButton(props) {
   const [
     updateRoti,
     { data: updateData, error: updateError, loading: updateLoading },
-  ] = useMutation(UPDATE_ROTI_MUTATION);
+  ] = useMutation(UPDATE_ROTI_MUTATION, {
+      refetchQueries: [{ query: CURRENT_USER_QUERY }],
+    }
+    
+    );
 
   const statToggle = (props.state==="AVAILABLE"?"toggle-on":"toggle-off");
   const statToggleStatus = (props.state==="AVAILABLE"?"AVAILABLE":"CLOSED");
@@ -55,7 +60,7 @@ export default function ToggleButton(props) {
   );
 
   if(toggled.value != statToggle) {
-    console.log("change detected");
+    //console.log("change detected");
     updateRoti({
       variables: {
         id: props.setId,

@@ -12,7 +12,7 @@ export default function Nav() {
   return (
     <NavStyles>
       <Link href="/">Dashboard</Link>
-      <Link href="/rotis">Rotis</Link>
+      {/* <Link href="/rotis">Rotis</Link> */}
       {user && (
         <>
           <Link href="/create">Create</Link>
@@ -22,7 +22,7 @@ export default function Nav() {
       )}
       {!user && (
         <>
-          <Link href="/contact">Contact</Link>
+          {/* <Link href="/contact">Contact</Link> */}
           <Link href="/signin">Sign In</Link>
         </>
       )}

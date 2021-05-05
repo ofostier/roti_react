@@ -5,6 +5,9 @@ import Rating from '@material-ui/lab/Rating';
 import Link from 'next/link';
 import { perPage } from '../config';
 import { da } from 'date-fns/locale';
+import Title from './styles/Title';
+import Moment from 'moment';
+import moment from 'moment';
 
 const BlockListStyles = styled.div`
   //display: grid;
@@ -72,23 +75,34 @@ const RotiItemStyles = styled.li`
 `;
 const BlockRatingStyles = styled.div`
   text-align: right;
+  padding-top: 1rem;
 
 `;
 const BlockInfoStyles = styled.div`
   text-align: left;
+  padding-top: 1rem;
 
 `;
+function toDate(date, format, lg='en-gb') {
 
-function RotiItem({ rotiItem }) {
+  moment.locale(lg);
+  return Moment(date).format(format);
+}
+
+function RotiItem({ rotiItem, lg }) {
   //const { roti } = rotiItem;
   //console.log(rotiItem)
   if (!rotiItem) return null;
-  
   return (
     <RotiItemStyles>
       <BlockInfoStyles>
-      {rotiItem.status==="AVALAIBLE"?"🏁":"🔒"}  
-      <Link href={`/surveys/results/${rotiItem.id}`}>{rotiItem.subject}</Link>
+        <Title><Link href={`/surveys/results/${rotiItem.id}`}>{rotiItem.subject}</Link></Title>
+        <em className="InfoDate">{toDate(rotiItem.datecreated, 'LLLL', lg)}
+        {
+          (rotiItem.status ==="AVAILABLE" ? " - 🔼" : " - 🔒")
+        }
+        </em>
+      
       </BlockInfoStyles>
       {/* <div> VOTES
 
@@ -122,19 +136,15 @@ function getTotalNotes(data){
 
 export default function HomeListBlock( {me} ) {
 
-  //const count = getCougetCountVotesnt(me);
   //console.log(count);
-
-  // const { data, error, loading } = useQuery(ALL_AGGREGATE_ROTIS_QUERY, {
-
-  // });
+  //console.log(me);
 
   return (
     <BlockListStyles>
       <ul>
           {me.rotis.map((roti) => (
             //console.log(roti.id)
-            <RotiItem key={roti.id} rotiItem={roti} />
+            <RotiItem key={roti.id} lg={me.language} rotiItem={roti} />
           ))}
       </ul>
     </BlockListStyles>

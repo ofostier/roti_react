@@ -1,5 +1,5 @@
 import { list } from '@keystone-next/keystone/schema';
-import { text, password, relationship } from '@keystone-next/fields';
+import { text, password, relationship, select } from '@keystone-next/fields';
 
 export const User = list({
   // access:
@@ -11,6 +11,17 @@ export const User = list({
     password: password(),
     phone: text({ isRequired: false }),
     rotis: relationship({ ref: 'Roti.user', many: true }),
+    language: select({
+      options: [
+        { label: 'Français', value: 'fr' },
+        { label: 'English', value: 'en-gb' },
+      ],
+      defaultValue: 'Français',
+      ui: {
+        displayMode: 'segmented-control',
+        createView: { fieldMode: 'hidden' },
+      },
+    }),
     // TODO, add roles, cart and orders
   },
 });

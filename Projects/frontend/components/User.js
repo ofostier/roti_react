@@ -9,10 +9,13 @@ const CURRENT_USER_QUERY = gql`
         name
         firstname
         phone
+        language
         rotis {
           id
           subject
           description
+          status
+          datecreated
           votes {
             id
             name
