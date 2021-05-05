@@ -13,6 +13,7 @@
     "@apollo/client": "^3.3.14",
     "@apollo/link-error": "*",
     "@apollo/react-ssr": "^4.0.0",
+    "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",

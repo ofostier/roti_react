@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  backend:
+    env_file:
+        "./backend/.env"
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    image: "ofostier/rotireact-backend"
+    ports:
+      - "9998:9998"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    image: "ofostier/rotireact-frontend"
+    ports:
+      - "9999:9999"
+    links:
+      - "backend"

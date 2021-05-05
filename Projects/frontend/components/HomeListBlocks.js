@@ -87,8 +87,8 @@ function RotiItem({ rotiItem }) {
   return (
     <RotiItemStyles>
       <BlockInfoStyles>
+      {rotiItem.status==="AVALAIBLE"?"🏁":"🔒"}  
       <Link href={`/surveys/results/${rotiItem.id}`}>{rotiItem.subject}</Link>
-      <li>🔴</li>
       </BlockInfoStyles>
       {/* <div> VOTES
 
