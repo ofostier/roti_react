@@ -1,10 +1,7 @@
-import Home from "../components/Home";
-import PleaseSignIn from '../components/PleaseSignIn';
+import HomePage from '../components/HomePage'
 
-export default function CreateRotiPage() {
+export default function Home() {
   return(
-    <PleaseSignIn>
-      <Home />
-    </PleaseSignIn>   
+    <HomePage></HomePage>
   )
 }

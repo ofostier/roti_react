@@ -83,26 +83,52 @@ const BlockInfoStyles = styled.div`
   padding-top: 1rem;
 
 `;
+const TagStyles = styled.button`
+  
+    background-color: var(--lightGrey);
+    //box-shadow: 0 0 5px 3px rgba(0, 0, 255, 0.05);
+    box-shadow: 1px 1px 4px var(--grey);
+    color: var(--mineShaft);
+    font-size: 1rem;
+    padding:0.5rem 1rem;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid var(--grey);
+    :hover {
+      color: var(--mineShaft);
+      background-color: var(--tulipTree)
+    }
+`;
 function toDate(date, format, lg='en-gb') {
 
   moment.locale(lg);
   return Moment(date).format(format);
 }
 
-function RotiItem({ rotiItem, lg }) {
+function RotiItem({ rotiItem, lg, }) {
   //const { roti } = rotiItem;
   //console.log(rotiItem)
   if (!rotiItem) return null;
+  const tags = (rotiItem.tags!= null && rotiItem.tags.length>0)?rotiItem.tags.split(','):[];
+
   return (
     <RotiItemStyles>
       <BlockInfoStyles>
         <Title><Link href={`/surveys/results/${rotiItem.id}`}>{rotiItem.subject}</Link></Title>
         <em className="InfoDate">{toDate(rotiItem.datecreated, 'LLLL', lg)}
         {
-          (rotiItem.status ==="AVAILABLE" ? " - 🔼" : " - 🔒")
+          (rotiItem.status ==="AVAILABLE" ? " - 🔼" : " - 🔒❤")
         }
         </em>
-      
+        <div>
+        {
+              tags.map((value, key) => (
+                <TagStyles key={key}>{value}</TagStyles>
+              ))
+        }
+        </div>
       </BlockInfoStyles>
       {/* <div> VOTES
 
@@ -125,24 +151,39 @@ function RotiItem({ rotiItem, lg }) {
 
 function getTotalNotes(data){
   var total = 0;
-  //console.log(data.votes)
   data.votes.map(vote => {
-     //console.log(vote.note);
-    //console.log(roti._votesMeta.count)
     total += parseInt(vote.note);
   })
   return total;
 }
 
-export default function HomeListBlock( {me} ) {
+export default function DashboardListBlock( {me, survey, loading} ) {
 
   //console.log(count);
   //console.log(me);
 
+  if (loading) return <p>Loading...</p>;
+
+  if (me.rotis.length == 0) {
+    return(
+      <BlockListStyles>
+        <p>Hey !! you don't have any ROTI yet!</p>
+        <p>Start to create one !</p>
+      </BlockListStyles>
+    )
+  }
+  if (survey.length == 0) {
+    
+    survey = me.rotis;
+
+  }
+
+
   return (
     <BlockListStyles>
       <ul>
-          {me.rotis.map((roti) => (
+          {/* {me.rotis.map((roti) => ( */}
+          {survey.map((roti) => (
             //console.log(roti.id)
             <RotiItem key={roti.id} lg={me.language} rotiItem={roti} />
           ))}

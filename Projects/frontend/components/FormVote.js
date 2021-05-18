@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation, useSubscription } from '@apollo/client';
 import gql from 'graphql-tag';
 import { ALL_ROTIS_QUERY } from './Rotis';
 import Form from './styles/Form';
@@ -7,6 +7,7 @@ import DisplayError from './ErrorMessage';
 import Rating from '@material-ui/lab/Rating';
 import styled from 'styled-components';
 import ThxFeedBack from './ThxFeedBack';
+import { CURRENT_USER_QUERY } from './User';
 
 const BlockRating = styled.div`
   font-size: 3.5rem;
@@ -68,7 +69,8 @@ export default function FormVote ({ id }) {
         roti: id,
       },
       //variables: {data:{name:"inputs.name", roti:"607e9fc1b86dba1e97689a32"}},
-      refetchQueries: [{ query: ALL_ROTIS_QUERY }],
+      //refetchQueries: [{ query: ALL_ROTIS_QUERY }],
+      refetchQueries: [{ query: CURRENT_USER_QUERY }],
     }
   );
   const handleSubmit = async (e) => {

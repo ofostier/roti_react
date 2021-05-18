@@ -5,13 +5,14 @@ import styled from 'styled-components';
 import { device } from "../../../components/styles/Device";
 import SurveyResultDetail from '../../../components/SurveyResultDetail';
 import SurveyResultInfo from '../../../components/SurveyResultInfo';
-import HomeResults from "../../../components/styles/HomeResults";
+import BlockResults from "../../../components/styles/BlockResults";
 import { useUser } from "../../../components/User";
 import { da } from 'date-fns/locale';
 
 const GridStyles = styled.div`
     display: flex;
     flex-direction: column;
+    //background-color: var(--lightGrey);
     @media ${device.tablet} {
     
         display: grid;
@@ -74,9 +75,9 @@ export default function SurveyResultPage() {
 
   return (
     <GridStyles>
-      <HomeResults>
+      <BlockResults>
        <SurveyResultInfo me={me} roti={roti}></SurveyResultInfo>
-      </HomeResults>
+      </BlockResults>
       <SurveyResultDetail roti={roti}></SurveyResultDetail>
     </GridStyles>
   )

@@ -12,12 +12,13 @@ const loading = keyframes`
   }
 `;
 
-const Form = styled.form`
-  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+const DashboardSurveyFilterStyles = styled.form`
+  /* box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
   background: rgba(0, 0, 0, 0.02);
   border: 5px solid (white);
   border-radius: 0.5rem;
-  padding: 20px;
+  padding: 20px; */
+  padding-top: 20px;
   font-size: 1.5rem;
   line-height: 1.5;
   font-weight: 600;
@@ -28,10 +29,12 @@ const Form = styled.form`
   input,
   textarea,
   select {
+    background-color: white;
+    display:flex;
     width: 100%;
     padding: 0.5rem;
     font-size: 1.5rem;
-    border: 1px solid black;
+    //border: 1px solid black;
     border-radius: 0.5rem;
     height:3.5rem; //.8rem;
     &:focus {
@@ -52,9 +55,9 @@ const Form = styled.form`
       display: block;
       background-image: linear-gradient(
         to right,
-        #000000 0%,
-        var(--grey) 70%,
-        #FFFFFF 100%
+        var(--tulipTree) 0%,
+        var(--pottersClay) 70%,
+        var(--mineShaft) 100%
       );
     }
     &[aria-busy='true']::before {
@@ -64,4 +67,4 @@ const Form = styled.form`
   }
 `;
 
-export default Form;
+export default DashboardSurveyFilterStyles;

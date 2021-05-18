@@ -8,10 +8,11 @@ const Logo = styled.h1`
   margin-left: 2rem;
   position: relative;
   z-index: 2;
-  transform: skew(-7deg);
-  background: black;
+  transform: skew(-10deg);
+  background: var(--tulipTree);
   a {
-    color: white;
+    //color: white;
+    color: var(--mineShaft);
     text-decoration: none;
     text-transform: uppercase;
     padding: 0.5rem 1rem;
@@ -20,7 +21,7 @@ const Logo = styled.h1`
 
 const HeaderStyles = styled.header`
   .bar {
-    border-bottom: 5px solid var(--black, black);
+    border-bottom: 5px solid var(--mineShaft, black);
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;

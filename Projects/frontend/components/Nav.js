@@ -11,11 +11,11 @@ export default function Nav() {
   //const { openCart } = useCart();
   return (
     <NavStyles>
-      <Link href="/">Dashboard</Link>
+      <Link href="/create">Create</Link>
       {/* <Link href="/rotis">Rotis</Link> */}
       {user && (
         <>
-          <Link href="/create">Create</Link>
+          <Link href="/dashboard">Dashboard</Link>
           <Link href="/account">Account</Link>
           <SignOut />
         </>

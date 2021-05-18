@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import ItemStyles from './styles/ItemStyles';
 import Title from './styles/Title';
 import DisplayError from './ErrorMessage';
-import formatDate from '../lib/formatDate';
+import {formatDate} from '../lib/formatDate';
 import Rating from '@material-ui/lab/Rating';
 import FormVote from './FormVote';
 import ThxFeedBack from './ThxFeedBack';
@@ -21,6 +21,7 @@ const RotiStyles = styled.div`
   justify-content: center;
   align-items: top;
   gap: 2rem;
+  padding-bottom: 10rem;
   img {
     width: 100%;
     object-fit: contain;
@@ -114,17 +115,6 @@ export default function VoteRoti ({ shorturl }) {
 
   if (loading ) return <p>Loading...</p>;
   const Roti = data.allRotis[0];
-  //console.log(data)
-  // console.log(data.allRotis[0].subject)
-  // Object.keys(data.allRotis).map((roti, i) => (
-  //   console.log(data.allRotis[roti].subject)
-  // ))
-  //const {myroti} = data.allRotis.filter(rotis => rotis).map((roti,key) => (roti));
-
-  //console.log((myroti))
-  //console.log(Object.values(myroti))
-
-  //return(<p>STOPPED</p>);
 
   function Status () {
     if(Roti.status == "AVAILABLE") {

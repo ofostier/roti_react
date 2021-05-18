@@ -6,7 +6,7 @@ const Title = styled.h3`
   transform: skew(-5deg) rotate(-1deg);
   margin-top: -1rem;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
-  background: var(--black);
+  background: var(--pottersClay);
   color: white;
   a {
     //background: var(--red);

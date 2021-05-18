@@ -107,8 +107,9 @@ export default function CreateRoti() {
           />
         </label>
         </fieldset>
+        <h2>Options</h2>
         <fieldset>
-          <h2>Options</h2>
+          
           {
           //TODO: [RR-4] Create field input for TAGS
           }

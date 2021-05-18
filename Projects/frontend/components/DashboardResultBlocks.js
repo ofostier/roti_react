@@ -1,8 +1,10 @@
+import { useCallback, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
-import Link from 'next/link';
 import { da } from 'date-fns/locale';
+import DashBoardSurveyFilter from './DashboardSurveyFilter';
+import { getSurvey,FILTER_SURVEY_QUERY } from "./QuerySurvey";
 
 const BlockResultStyles = styled.div`
   display: grid;
@@ -12,12 +14,16 @@ const BlockResultStyles = styled.div`
   align-items: stretch;
   justify-content: center;
   align-content: center;
-  //border-top: 1px solid var(--lightGrey);
+  //border-top: 1px solid var(--pottersClay);
+  border-bottom: 1px solid var(--tulipTree);
   text-align: center;
+  color: var(--mineShaft);
+  //text-shadow: 1px 1px 2px var(--lightGrey);
   //border: 1px solid var(--red);
   label {
     font-size: 1.5rem;
-    color: var(--grey)
+    color: var(--pottersClay);
+    //text-shadow: 1px 1px 2px black;
   }
   
 `;
@@ -25,7 +31,8 @@ const BlockResultStyles = styled.div`
 const NewRotiButtonStyles = styled.button`
   display: block;
   width: 100%;
-  background: black;
+  background: var(--tulipTree);
+  box-shadow: 1px 1px 2px var(--mineShaft);
   color: white;
   border: 0;
   font-size: 2rem;
@@ -33,9 +40,7 @@ const NewRotiButtonStyles = styled.button`
   padding: 1rem 1.5rem;
   margin-top: 10px;
   border-radius: 4px;
-  a {
-    color: white;
-  }
+  text-shadow: 1px 1px 2px var(--black);
 `;
 
 function getCountVotes(data){
@@ -45,19 +50,36 @@ function getCountVotes(data){
     count += roti._votesMeta.count
   })
   return count;
-}
+};
 
-export default function HomeResultBlock( {me} ) {
+function BlockTest({rotiItem}){
+  //console.log(rotiItem);
+  return(
+  <p>{rotiItem.subject}</p>
+  )
+};
 
+
+
+export default function DashboardResultBlock( {me, callback, survey} ) {
+
+  //const survey = getSurvey();
   //const count = getCougetCountVotesnt(me);
-  //console.log(count);
+  //console.log(me);
+  //console.log(callback);
 
   // const { data, error, loading } = useQuery(ALL_AGGREGATE_ROTIS_QUERY, {
 
   // });
 
+  // TODO: [RR-3] Create action on button CREATET ROTI
+
+ 
+
   return (
+    
     <>
+
       <BlockResultStyles>
         <div> {me._rotisMeta.count} 
           <label>SURVEYS</label>
@@ -69,10 +91,14 @@ export default function HomeResultBlock( {me} ) {
           <label>PLAYERS</label>
         </div>
       </BlockResultStyles>
-      <NewRotiButtonStyles>
-        <Link href={`/create`}>Create New ROTI</Link>
-      </NewRotiButtonStyles>
-      
+      <NewRotiButtonStyles>Create New ROTI</NewRotiButtonStyles>
+
+      <DashBoardSurveyFilter callback={callback}></DashBoardSurveyFilter>
+      {/* {survey.map((survey) => (
+            //console.log(survey)
+            <BlockTest key={survey.id} rotiItem={survey}></BlockTest>
+          ))} */}
+
     </>
   )
 }

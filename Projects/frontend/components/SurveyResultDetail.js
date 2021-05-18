@@ -2,6 +2,13 @@ import styled from 'styled-components';
 import Rating from '@material-ui/lab/Rating';
 import { TagCloud } from 'react-tagcloud'
 import getTagsList from '../lib/getTagsList';
+import fontawesome from '@fortawesome/fontawesome';
+import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {formatDate, sinceDate} from '../lib/formatDate';
+import Subscription from './Subscription';
+
+fontawesome.library.add(faSpinner);
 
 const GridStyles = styled.div`
   //display: grid;
@@ -10,6 +17,7 @@ const GridStyles = styled.div`
   //grid-gap: 2rem;
   text-align: center;
   border: 1px solid var(--lightGrey);
+  
   h1 {
     margin: 0px;
     padding: 0px;
@@ -168,7 +176,7 @@ export default function SurveyResultDetail( {roti} ) {
       <h1>
         {roti.subject}
         <div className="subheader">
-          Mardi 20 avril 2021 11:08<br/><small>il y a 8 jours</small>
+          {formatDate(roti.datecreated, 'LLLL')}<br/><small>{sinceDate(roti.datecreated)}</small>
         </div>
       </h1>
       
@@ -197,7 +205,7 @@ export default function SurveyResultDetail( {roti} ) {
       </GridResults>
       <h2><span>Details</span></h2>   
         {
-          roti.votes.length===0?<p>Waiting for some votes</p>:''
+          roti.votes.length===0?<p>Waiting for some votes - <FontAwesomeIcon icon={faSpinner} className="fa-spin"></FontAwesomeIcon></p>:''
         }
         {roti.votes.map((vote) => (
             <GridResultsDetailsStyles key={vote.id}>
@@ -228,6 +236,8 @@ export default function SurveyResultDetail( {roti} ) {
             colorOptions={optionsCloud}
             onClick={tag => alert(`'${tag.value}' was selected!`)}
           />
+
+          {/* <Subscription /> */}
     </GridStyles>
   )
 }

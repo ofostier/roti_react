@@ -15,6 +15,7 @@ const CURRENT_USER_QUERY = gql`
           subject
           description
           status
+          tags
           datecreated
           votes {
             id

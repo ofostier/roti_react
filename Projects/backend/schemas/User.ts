@@ -16,7 +16,7 @@ export const User = list({
         { label: 'Français', value: 'fr' },
         { label: 'English', value: 'en-gb' },
       ],
-      defaultValue: 'Français',
+      defaultValue: 'en-gb',
       ui: {
         displayMode: 'segmented-control',
         createView: { fieldMode: 'hidden' },

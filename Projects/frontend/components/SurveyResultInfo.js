@@ -37,11 +37,12 @@ const BlockListSection = styled.div`
   grid-template-rows: auto 1fr auto;
   //display: block;
   //width: 100%;
-  padding: 10px;
+  padding-bottom: 10px;
   text-align:left;
   vertical-align: baseline;
   color: var(--black);
   border-bottom: 1px solid var(--lightGrey);
+  
   .toggle-on {
     color: green;
   }
@@ -51,6 +52,7 @@ const BlockListSection = styled.div`
 `;
 
 const BlockListSectionLabelName = styled.div`
+
   //display: block;
   //width: 100%;
   //padding: 5px;
@@ -100,7 +102,7 @@ const BlockListSectionLabel = styled.div`
 `;
 const TagStyles = styled.button`
   
-    background-color: var(--lightGrey);
+    background-color: var(--tulipTree);
     //box-shadow: 0 0 5px 3px rgba(0, 0, 255, 0.05);
     box-shadow: 1px 1px 4px var(--grey);
     color: var(--black);
@@ -118,7 +120,7 @@ const TagStyles = styled.button`
 `;
 
 const LinkStyles = styled.div`
-  border-bottom: 1px solid var(--lightGrey);
+  border-bottom: 1px solid var(--mineShaft);
   text-align: left;
   display: grid;
   grid-template-columns: 90% 1fr;
@@ -128,7 +130,7 @@ const LinkStyles = styled.div`
   vertical-align: baseline;
   padding: 1rem;
   //margin: 2rem 0;
-  border: 1px solid var(--lightGrey);
+  border: 1px solid var(--mineShaft);
   border-radius: 5px;
   /* & > * {
     margin: 0;
@@ -213,7 +215,7 @@ export default function SurveyResultInfo( {me, roti} ) {
         <BlockListSectionLabel>Link
           <LinkStyles>
           <span>{serverUrl}/r/{roti.shorturl}</span>
-          <FontAwesomeIcon onClick={() => {navigator.clipboard.writeText(serverUrl +"/r/"+ roti.shorturl)}} icon={faCopy} size="2x" />
+          <FontAwesomeIcon onClick={() => {navigator.clipboard.writeText("toto")}} icon={faCopy} size="2x" />
           
           </LinkStyles>
         </BlockListSectionLabel>
