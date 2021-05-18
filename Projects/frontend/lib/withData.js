@@ -12,20 +12,6 @@ import { endpoint, endpointWs, prodEndpoint } from '../config';
 
 //import paginationField from './paginationField';
 
-// const wsLink: ApolloLink = new WebSocketLink({
-//   uri: uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
-//   options: {
-//       reconnect: true
-//   }
-// });
-const link = new WebSocketLink({
-  uri: 'ws://localhost:4000/',
-  //uri: 'ws://localhost:4000/subscriptions',
-  options: {
-    reconnect: true
-  }
-});
-
 const wsLink = process.browser
   ? new WebSocketLink({
       //uri: `ws://192.168.0.13:9998`, // Can test with your Slash GraphQL endpoint (if you're using Slash GraphQL) 
@@ -40,26 +26,7 @@ const wsLink = process.browser
       },
     })
   : null;
-  // const link = new WebSocketLink({
-  //   uri: `ws://192.168.1.13:9998/api/graphql`,
-  //   options: {
-  //     reconnect: true
-  //   }
-  // });  
 
-  const splitLink = process.browser
-  ? split(
-      ({ query }) => {
-        const definition = getMainDefinition(query);
-        return (
-          definition.kind === "OperationDefinition" &&
-          definition.operation === "subscription"
-        );
-      },
-      wsLink,
-      
-    )
-  : null;
 
 function createClient({ headers, initialState }) {
   return new ApolloClient({
@@ -77,13 +44,6 @@ function createClient({ headers, initialState }) {
           );
       }),
 
-      // WebSocketLink({
-      //   uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
-      //   options: {
-      //       reconnect: true
-      //   }
-      // }),
-      // this uses apollo-link-http under the hood, so all the options here come from that package
       createUploadLink({
         uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
         fetchOptions: {
